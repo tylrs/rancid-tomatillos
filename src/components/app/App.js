@@ -1,4 +1,5 @@
 import './App.css';
+import '../../movieData'
 
 function App() {
   return (
