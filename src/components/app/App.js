@@ -1,13 +1,13 @@
-import '../../movieData'
 import './App.css';
-import MovieBoard from '../MovieBoard'
+import movieData from '../../movieData'
+import MovieBoard from '../MovieBoard/MovieBoard'
 import React,{ Component } from 'react';
 
 class App extends Component {
   constructor() {
     super() 
       this.state = {
-        movies: []
+        movies: movieData.movies
       }
     }
   render() {
