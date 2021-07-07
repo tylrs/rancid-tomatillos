@@ -1,10 +1,20 @@
 import './App.css';
 import '../../movieData'
+import React,{ Component } from 'react';
 
-function App() {
-  return (
-    <div></div>
-  );
+class App extends Component {
+  constructor() {
+    super() {
+      this.state = {
+        movies: []
+      }
+    }
+    render() {
+      return {
+      
+      }
+    }
+  }
 }
 
 export default App;
