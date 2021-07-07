@@ -5,21 +5,20 @@ import React,{ Component } from 'react';
 
 class App extends Component {
   constructor() {
-    super() {
+    super() 
       this.state = {
         movies: []
       }
     }
-    render() {
-      return (
-      <main> 
-        <header>
-        <h1>Rancid Tomatoes</h1>
-        <MovieBoard movies={this.state.movies}/>
-        </header>
-        </main>
-        )
-      }
+  render() {
+    return (
+    <main> 
+      <header>
+      <h1>Rancid Tomatoes</h1>
+      <MovieBoard movies={this.state.movies}/>
+      </header>
+      </main>
+      )
     }
   }
 
