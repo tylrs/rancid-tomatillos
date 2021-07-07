@@ -10,11 +10,15 @@ class App extends Component {
       }
     }
     render() {
-      return {
-        <main> <header><h1>Rancid Tomatoes</h1></header></main>
+      return (
+      <main> 
+        <header>
+        <h1>Rancid Tomatoes</h1>
+        </header>
+        </main>
+      )
       }
     }
   }
-}
 
 export default App;
