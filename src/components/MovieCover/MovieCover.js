@@ -1,9 +1,9 @@
 import React from "react"
 
-const MovieCover = ({poster, title}) => {
+const MovieCover = ({id, poster, title}) => {
   return (
     <article>
-      <img src={poster} alt={title}/>
+      <img src={poster} alt={title} />
     </article>
   )
 }
