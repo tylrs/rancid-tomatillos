@@ -15,8 +15,8 @@ class App extends Component {
     <main> 
       <header>
       <h1>Rancid Tomatoes</h1>
-      <MovieBoard movies={this.state.movies}/>
       </header>
+      <MovieBoard movies={this.state.movies}/>
       </main>
       )
     }
