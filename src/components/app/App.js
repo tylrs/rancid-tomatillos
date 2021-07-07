@@ -13,8 +13,8 @@ class App extends Component {
   render() {
     return (
     <main> 
-      <header>
-      <h1>Rancid Tomatoes</h1>
+      <header className='app-title'>
+        <h1>Rancid Tomatillos</h1>
       </header>
       <MovieBoard movies={this.state.movies}/>
       </main>
