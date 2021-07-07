@@ -1,9 +1,10 @@
 .movies-container {
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
+    gap: 10px;
     justify-items: center;
-    align-items: center;
+    /* padding: 10px; */
     /* grid-templat-rows: repeat(2, 1fr); */
     /* display: inline-grid;
     grid-template-rows: 100px 100px 100px;
