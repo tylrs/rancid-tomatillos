@@ -3,7 +3,7 @@ import "./MovieCover.css"
 
 const MovieCover = ({id, poster, title}) => {
   return (
-    <article>
+    <article className='movie-card'>
       <img src={poster} alt={title} />
     </article>
   )
