@@ -7,6 +7,8 @@ const Movie = (props) => {
     let genreTags = genres.map(genre => <p>{genre}</p>)   
     return (
         <article className='selected-movie'>
+            <h2>{title}</h2>
+            <button>Back</button>
             <img src={backdrop_path} alt={title}/>
             <p>Release Date:<span>{release_date}</span></p>
             <p>Genres:<span>{genreTags}</span></p>
@@ -15,7 +17,7 @@ const Movie = (props) => {
                 <p>Duration:<span>{runtime} mins</span></p>   
             </div>
             <hr />
-            <h2>{overview}</h2>
+            <h3>{overview}</h3>
             <p>Budget:<span>${budget}</span></p>
             <p>Revenue:<span>${revenue}</span></p>
             <p>Tagline:<span>${tagline}</span></p>
