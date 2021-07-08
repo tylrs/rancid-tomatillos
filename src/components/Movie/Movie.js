@@ -3,7 +3,7 @@ import React from 'react'
 const Movie = (props) => {
     let {backdrop_path, title, average_rating,
          release_date, overview, genres, budget,
-          revenue, runtime, tagline} = props;
+          revenue, runtime, tagline} = props.movieInfo;
     let genreTags = genres.map(genre => <p>{genre}</p>)   
     return (
         <article className='selected-movie'>
