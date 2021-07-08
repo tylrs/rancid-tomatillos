@@ -8,7 +8,6 @@ const movieData = {
       "average_rating": 6.666666666666667,
       "release_date": "2020-09-29",
       "overview": "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!", 
-      average_rating: 6, 
       genres: ["Drama"], 
       budget:63000000, 
       revenue:100853753, 
