@@ -1,6 +1,7 @@
 import './App.css';
 import movieData from '../../movieData'
 import MovieBoard from '../MovieBoard/MovieBoard'
+import Movie from '../Movie/Movie'
 import React,{ Component } from 'react';
 
 class App extends Component {
@@ -28,7 +29,7 @@ class App extends Component {
         {
           this.state.selectedMovie.title ? 
           <Movie movieInfo={this.state.selectedMovie}/> : 
-          <MovieBoard movies={this.state.movies}/>
+          <MovieBoard movies={this.state.movies} selectMovie={this.selectMovie}/>
         }
       </main>
       )
