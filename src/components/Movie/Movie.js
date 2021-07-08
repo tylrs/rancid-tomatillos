@@ -9,7 +9,7 @@ const Movie = (props) => {
     return (
         <article className='selected-movie'>
             <h2>{title}</h2>
-            <button>Back</button>
+            <button onClick={()=> {props.unselectMovie()}}>Back</button>
             <img src={backdrop_path} alt={title}/>
             <p>Release Date:<span>{release_date}</span></p>
             <p>Genres:<span>{genreTags}</span></p>
