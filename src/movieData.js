@@ -6,7 +6,13 @@ const movieData = {
       "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
       "title": "Money Plane",
       "average_rating": 6.666666666666667,
-      "release_date": "2020-09-29"
+      "release_date": "2020-09-29",
+      "overview": "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!", 
+      genres: ["Drama", "Mystery", "Animals", "Bad"], 
+      budget:63000000, 
+      revenue:100853753, 
+      runtime:139, 
+      tagline: "It's a movie!" 
     },
     {
       "id": 337401,

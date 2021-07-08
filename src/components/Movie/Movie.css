@@ -1,0 +1,10 @@
+.selected-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selected-movie img {
+    height: 55%;
+    width: 100%;
+}
