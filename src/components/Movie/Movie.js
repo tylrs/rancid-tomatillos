@@ -1,4 +1,5 @@
 import React from 'react'
+import './Movie.css'
 
 const Movie = (props) => {
     let {backdrop_path, title, average_rating,
@@ -16,7 +17,7 @@ const Movie = (props) => {
                 <p>Rating:<span>{average_rating}</span></p>
                 <p>Duration:<span>{runtime} mins</span></p>   
             </div>
-            <hr />
+            <hr/>
             <h3>{overview}</h3>
             <p>Budget:<span>${budget}</span></p>
             <p>Revenue:<span>${revenue}</span></p>
