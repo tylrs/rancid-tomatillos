@@ -20,6 +20,12 @@ class App extends Component {
     })
   }
 
+  unselectMovie = () => {
+    this.setState({
+      selectedMovie: {}
+    })
+  }
+
   render() {
     return (
       <main> 
@@ -28,7 +34,7 @@ class App extends Component {
         </header>
         {
           this.state.selectedMovie.title ? 
-          <Movie movieInfo={this.state.selectedMovie}/> : 
+          <Movie movieInfo={this.state.selectedMovie} unselectMovie={this.unselectMovie}/> : 
           <MovieBoard movies={this.state.movies} selectMovie={this.selectMovie}/>
         }
       </main>
