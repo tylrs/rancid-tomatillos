@@ -14,18 +14,28 @@ class App extends Component {
       }
     }
 
-    componentDidMount() {
-      fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(response => response.json())
-      .then(movieData => this.setState({movies: movieData.movies}))
-      .catch(error => this.setState({error: 'Oops server is down!'}))
-    }
+  componentDidMount() {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => response.json())
+    .then(movieData => {
+      this.setState({movies: movieData.movies})
+      console.log(this.state.movies)
+    })
+    .catch(error => this.setState({error: 'Oops server is down!'}))
+  }
 
   
   selectMovie = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({
-      selectedMovie
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(response => response.json())
+    .then(selectedMovie => {
+      console.log(selectedMovie)
+      this.setState({
+        selectedMovie: selectedMovie.movie
+      })
+    })
+    .catch(error => {
+      this.setState({error: 'could not retrieve movie'})
     })
   }
 
@@ -42,6 +52,7 @@ class App extends Component {
           <h1>Rancid Tomatillos</h1>
         </header>
         {this.state.error && <p>Whoopsie, the server is down!</p> }
+        {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
         {
           this.state.selectedMovie.title && !this.state.error ?
           <Movie key={this.state.selectedMovie.id} movieInfo={this.state.selectedMovie} unselectMovie={this.unselectMovie}/> : 
