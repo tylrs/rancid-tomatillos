@@ -34,7 +34,7 @@ class App extends Component {
         </header>
         {
           this.state.selectedMovie.title ? 
-          <Movie movieInfo={this.state.selectedMovie} unselectMovie={this.unselectMovie}/> : 
+          <Movie key={this.state.selectedMovie.id} movieInfo={this.state.selectedMovie} unselectMovie={this.unselectMovie}/> : 
           <MovieBoard movies={this.state.movies} selectMovie={this.selectMovie}/>
         }
       </main>
