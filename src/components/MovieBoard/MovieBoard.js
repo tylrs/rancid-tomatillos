@@ -4,7 +4,13 @@ import "./MovieBoard.css"
 
  const MovieBoard = ({movies, selectMovie}) => {
     let movieCovers = movies.map(movie => 
-      <MovieCover key={movie.id} id={movie.id} poster={movie.poster_path} title={movie.title} selectMovie={selectMovie}/> 
+      <MovieCover 
+        key={movie.id} 
+        id={movie.id} 
+        poster={movie.poster_path} 
+        title={movie.title} 
+        selectMovie={selectMovie}
+      /> 
     )
 
   return (
