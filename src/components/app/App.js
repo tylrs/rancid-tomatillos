@@ -27,7 +27,7 @@ class App extends Component {
         </header>
         {
           this.state.selectedMovie.title ? 
-          <Movie /> : 
+          <Movie movieInfo={this.state.selectedMovie}/> : 
           <MovieBoard movies={this.state.movies}/>
         }
       </main>
