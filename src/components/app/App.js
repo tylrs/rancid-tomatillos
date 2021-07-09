@@ -20,7 +20,6 @@ class App extends Component {
     .then(response => response.json())
     .then(movieData => {
       this.setState({movies: movieData.movies})
-      console.log(this.state.movies)
     })
     .catch(error => this.setState({error: 'Oops server is down!'}))
   }
@@ -28,10 +27,8 @@ class App extends Component {
   
   selectMovie = (id) => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/wrongURL/${id}`)
     .then(response => response.json())
     .then(selectedMovie => {
-      console.log(selectedMovie)
       this.setState({
         selectedMovie: selectedMovie.movie
       })
