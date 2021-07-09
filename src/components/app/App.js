@@ -60,7 +60,7 @@ class App extends Component {
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.error && <Error error={this.state.error}/>}
+        {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
         {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
         {this.state.selectedMovie.title && !this.state.error && 
           <Movie 

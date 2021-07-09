@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Error = ({error}) => {
+const Error = ({error, leaveError}) => {
     return (
         <div>
             <p>{error}</p>
-            <button>Back</button>
+            <button onClick={() => {leaveError()}}>Back</button>
         </div>
     )
 }
