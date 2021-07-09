@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 // import movieData from '../../movieData'
 import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';

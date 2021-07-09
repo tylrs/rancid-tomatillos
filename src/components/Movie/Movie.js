@@ -1,5 +1,5 @@
 import React from 'react'
-import './Movie.css'
+import './Movie.scss'
 
 const Movie = (props) => {
     let {backdrop_path, title, average_rating,
