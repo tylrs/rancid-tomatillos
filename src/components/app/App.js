@@ -17,7 +17,6 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    // fetch('https://rancid-tomatillos.herokuapp.com/api/v/movies')
     .then(response => response.json())
     .then(movieData => {
       this.setState({movies: movieData.movies})
@@ -28,8 +27,8 @@ class App extends Component {
 
   
   selectMovie = (id) => {
-    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/wrongURL/${id}`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/wrongURL/${id}`)
     .then(response => response.json())
     .then(selectedMovie => {
       console.log(selectedMovie)
@@ -75,18 +74,6 @@ class App extends Component {
             selectMovie={this.selectMovie}
           />
         }
-        {/* {
-          (this.state.selectedMovie.title && !this.state.error) ?
-          <Movie 
-            key={this.state.selectedMovie.id} 
-            movieInfo={this.state.selectedMovie} 
-            unselectMovie={this.unselectMovie}
-          /> : 
-          <MovieBoard 
-            movies={this.state.movies} 
-            selectMovie={this.selectMovie}
-          />
-        } */}
       </main>
       )
     }
