@@ -55,8 +55,15 @@ class App extends Component {
         {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
         {
           this.state.selectedMovie.title && !this.state.error ?
-          <Movie key={this.state.selectedMovie.id} movieInfo={this.state.selectedMovie} unselectMovie={this.unselectMovie}/> : 
-          <MovieBoard movies={this.state.movies} selectMovie={this.selectMovie}/>
+          <Movie 
+            key={this.state.selectedMovie.id} 
+            movieInfo={this.state.selectedMovie} 
+            unselectMovie={this.unselectMovie}
+          /> : 
+          <MovieBoard 
+            movies={this.state.movies} 
+            selectMovie={this.selectMovie}
+          />
         }
       </main>
       )
