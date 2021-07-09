@@ -28,7 +28,6 @@ class App extends Component {
   
   selectMovie = (id) => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/wrongURL/${id}`)
     .then(response => response.json())
     .then(selectedMovie => {
       console.log(selectedMovie)
