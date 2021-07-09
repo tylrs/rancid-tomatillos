@@ -16,6 +16,7 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v/movies')
     .then(response => response.json())
     .then(movieData => {
       this.setState({movies: movieData.movies})
@@ -26,7 +27,8 @@ class App extends Component {
 
   
   selectMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/wrongURL/${id}`)
     .then(response => response.json())
     .then(selectedMovie => {
       console.log(selectedMovie)
@@ -35,7 +37,7 @@ class App extends Component {
       })
     })
     .catch(error => {
-      this.setState({error: 'could not retrieve movie'})
+      this.setState({error: 'Could not retrieve selected movie, please try again'})
     })
   }
 
@@ -51,10 +53,22 @@ class App extends Component {
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.error && <p>Whoopsie, the server is down!</p> }
+        {this.state.error && <p>{this.state.error}</p>}
         {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
-        {
-          this.state.selectedMovie.title && !this.state.error ?
+        {this.state.selectedMovie.title && !this.state.error && 
+          <Movie 
+            key={this.state.selectedMovie.id} 
+            movieInfo={this.state.selectedMovie} 
+            unselectMovie={this.unselectMovie}
+          />
+        }
+        {!this.state.selectedMovie.title && !this.state.error && 
+          <MovieBoard 
+            movies={this.state.movies} 
+            selectMovie={this.selectMovie}
+          />}
+        {/* {
+          (this.state.selectedMovie.title && !this.state.error) ?
           <Movie 
             key={this.state.selectedMovie.id} 
             movieInfo={this.state.selectedMovie} 
@@ -64,7 +78,7 @@ class App extends Component {
             movies={this.state.movies} 
             selectMovie={this.selectMovie}
           />
-        }
+        } */}
       </main>
       )
     }
