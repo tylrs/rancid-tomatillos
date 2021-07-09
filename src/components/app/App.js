@@ -1,7 +1,8 @@
 import './App.css';
 // import movieData from '../../movieData'
-import MovieBoard from '../MovieBoard/MovieBoard'
-import Movie from '../Movie/Movie'
+import MovieBoard from '../MovieBoard/MovieBoard';
+import Movie from '../Movie/Movie';
+import Error from '../Error/Error';
 import React,{ Component } from 'react';
 
 class App extends Component {
@@ -47,13 +48,19 @@ class App extends Component {
     })
   }
 
+  leaveError = () => {
+    this.setState({
+      error: ''
+    })
+  }
+
   render() {
     return (
       <main> 
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <Error error={this.state.error}/>}
         {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
         {this.state.selectedMovie.title && !this.state.error && 
           <Movie 
@@ -66,7 +73,8 @@ class App extends Component {
           <MovieBoard 
             movies={this.state.movies} 
             selectMovie={this.selectMovie}
-          />}
+          />
+        }
         {/* {
           (this.state.selectedMovie.title && !this.state.error) ?
           <Movie 
