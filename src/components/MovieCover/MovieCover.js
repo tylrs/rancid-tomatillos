@@ -1,5 +1,5 @@
 import React from "react"
-import "./MovieCover.css"
+import "./MovieCover.scss"
 
 const MovieCover = ({id, poster, title, selectMovie}) => {
   return (
