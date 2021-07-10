@@ -4,6 +4,7 @@ import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
 import React,{ Component } from 'react';
+import {Route, NavLink} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -56,7 +57,7 @@ class App extends Component {
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
+        {/* {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
         {!this.state.movies.length && !this.state.error && <p>Movies Loading...</p>}
         {this.state.selectedMovie.title && !this.state.error && 
           <Movie 
@@ -70,7 +71,13 @@ class App extends Component {
             movies={this.state.movies} 
             selectMovie={this.selectMovie}
           />
-        }
+        } */}
+        <Route path='/' render={({match}) =>
+          <MovieBoard 
+            movies={this.state.movies} 
+            selectMovie={this.selectMovie}
+          />
+        }/>
       </main>
       )
     }
