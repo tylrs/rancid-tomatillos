@@ -5,6 +5,7 @@ const Movie = (props) => {
     let {backdrop_path, title, average_rating,
          release_date, overview, genres, budget,
           revenue, runtime, tagline} = props.movieInfo;
+    // console.log(genres);
     let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
     return (
         <article className='selected-movie'>
