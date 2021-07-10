@@ -7,8 +7,8 @@ import React,{ Component } from 'react';
 import {Route, NavLink} from 'react-router-dom';
 
 class App extends Component {
-  constructor() {
-    super() 
+  constructor(props) {
+    super(props) 
       this.state = {
         movies: [],
         selectedMovie: {},
@@ -25,6 +25,12 @@ class App extends Component {
     .catch(error => this.setState({error: 'Oops server is down!'}))
   }
 
+ componentDidUpdate(prevProps, prevState) {
+    if (this.state.movies !== prevState.movies) {
+      console.log(prevProps)
+      this.selectMovie(694919)
+    }
+  }
   
   selectMovie = (id) => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
@@ -72,12 +78,24 @@ class App extends Component {
             selectMovie={this.selectMovie}
           />
         } */}
-        <Route path='/' render={({match}) =>
+        <Route exact path='/' render={() =>
           <MovieBoard 
             movies={this.state.movies} 
             selectMovie={this.selectMovie}
           />
         }/>
+        <Route exact path='/:id' render={({match}) => {
+          // const id = parseInt(match.params.id);
+          // this.selectMovie(id);
+          // console.log('hello')
+          return (
+            <Movie 
+              key={this.state.selectedMovie.id} 
+              movieInfo={this.state.selectedMovie} 
+              unselectMovie={this.unselectMovie}
+            />
+          )
+        }}/>
       </main>
       )
     }
