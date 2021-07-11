@@ -1,7 +1,8 @@
-import React from "react"
+import React from "react";
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const MovieCover = ({id, poster, title, selectMovie}) => {
+const MovieCover = ({id, poster, title}) => {
   return (
     <Link to={`/${id}`}>
       {/* <article className='movie-card' onClick={() => {selectMovie(id)}}> */}
@@ -12,4 +13,10 @@ const MovieCover = ({id, poster, title, selectMovie}) => {
   )
 }
 
-export default MovieCover
+export default MovieCover;
+
+MovieCover.propTypes = {
+  id: PropTypes.number,
+  poster: PropTypes.string,
+  title: PropTypes.string
+}
