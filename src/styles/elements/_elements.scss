@@ -12,12 +12,13 @@ header {
   text-align: center;
 }
 
-h1 {
-  font-size: $font-size-header;
-  font-family: $font-family-header;
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: .1rem;
+h1{
+@include title;
+font-style: italic;
+}
+
+h2 {
+  @include title;
 }
 
 p {
