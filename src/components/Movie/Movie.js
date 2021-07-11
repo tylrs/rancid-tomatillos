@@ -15,14 +15,17 @@ class Movie extends Component {
             release_date, overview, genres, budget,
              revenue, runtime, tagline} = this.props.movieInfo;
        // console.log(genres);
-    //    let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
+       let genreTags;
+       if (genres) {
+          genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
+       }
        return (
            <article className='selected-movie'>
                <h2>{title}</h2>
                <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>Back</button></Link>
                <img src={backdrop_path} alt={title}/>
                <p>Release Date:<span>{release_date}</span></p>
-               {/* <div>Genres:<span>{genreTags}</span></div> */}
+               <div>Genres:<span>{genreTags}</span></div>
                <div>
                    <p>Rating:<span>{average_rating}</span></p>
                    <p>Duration:<span>{runtime} mins</span></p>   
