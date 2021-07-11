@@ -1,5 +1,3 @@
-import './App.scss';
-// import movieData from '../../movieData'
 import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
