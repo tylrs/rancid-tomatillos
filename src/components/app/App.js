@@ -71,17 +71,22 @@ class App extends Component {
             selectMovie={this.selectMovie}
           />
         } */}
-        <Route exact path='/' render={() =>
-          <MovieBoard 
-            movies={this.state.movies} 
-            selectMovie={this.selectMovie}
-          />
-        }/>
+        <Route exact path='/' render={() =>{
+            return (
+              this.state.error ? <Error error={this.state.error} leaveError={this.leaveError}/> :
+              <MovieBoard 
+                movies={this.state.movies} 
+                selectMovie={this.selectMovie}
+              />
+            )
+          }}
+        />
         <Route exact path='/:id' render={({match}) => {
           const id = parseInt(match.params.id);
           // this.selectMovie(id);
           // console.log('hello')
           return (
+            this.state.error ? <Error error={this.state.error} leaveError={this.leaveError}/> :
             <Movie 
               key={this.state.selectedMovie.id} 
               movieInfo={this.state.selectedMovie} 
