@@ -22,7 +22,7 @@ import PropTypes from "prop-types"
  
 export default MovieBoard
 
-MovieBoard.proptypes = {
+MovieBoard.propTypes = {
   movies: PropTypes.array,
-  selectMovie: PropTypes.object
+  selectMovie: PropTypes.func
 }
