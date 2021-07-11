@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Error = ({error, leaveError}) => {
     return (
@@ -11,3 +12,8 @@ const Error = ({error, leaveError}) => {
 }
 
 export default Error
+
+Error.propTypes = {
+    error: PropTypes.string,
+    leaveError: PropTypes.func
+}
