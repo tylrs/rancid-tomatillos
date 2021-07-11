@@ -3,9 +3,6 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Movie extends Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
        this.props.selectMovie(this.props.id)
     }
