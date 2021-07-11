@@ -1,0 +1,30 @@
+/* ==========================================================================
+Tools - Mixins
+========================================================================== */
+
+
+/* === Flexbox === */
+@mixin flex($direction,$center, $wrap: nowrap ) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  @if $center {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+ 
+/* === Media Queries === */
+
+@mixin phone {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 1000px) {
+    @content;
+  }
+}
