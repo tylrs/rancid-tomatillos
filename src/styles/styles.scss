@@ -10,13 +10,13 @@ Settings - Global Variables
 Tools - Mixins
 ========================================================================== */
 
-
+@import './tools/mixins';
 
 /* ==========================================================================
 Generic - Resets & Normalize Styles
 ========================================================================== */
 
-@import './generic/generics';
+@import './generics/generics';
 
 /* ==========================================================================
 Elements - Semanitic Bare Elements 
