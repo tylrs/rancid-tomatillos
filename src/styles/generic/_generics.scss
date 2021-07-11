@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 
 * {
   box-sizing: border-box;
@@ -10,9 +8,8 @@
 body {
   height: 100vh;
   width: 100vw;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-family-defaults;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -23,7 +20,7 @@ button {
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-  font-size: 1rem;
-  font-weight: normal;
-  font-style: normal;
+  font-size: $font-size-defaults;
+  font-weight: $font-weight-defaults;
+  font-style: $font-style-defaults;
 }
