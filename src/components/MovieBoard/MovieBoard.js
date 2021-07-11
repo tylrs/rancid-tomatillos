@@ -1,5 +1,6 @@
 import React from "react"
 import MovieCover from "../MovieCover/MovieCover"
+import PropTypes from "prop-types"
 
  const MovieBoard = ({movies, selectMovie}) => {
     let movieCovers = movies.map(movie => 
@@ -20,3 +21,8 @@ import MovieCover from "../MovieCover/MovieCover"
  }
  
 export default MovieBoard
+
+MovieBoard.proptypes = {
+  movies: PropTypes.array,
+  selectMovie: PropTypes.object
+}
