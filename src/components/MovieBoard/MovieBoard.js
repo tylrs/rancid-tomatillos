@@ -1,6 +1,5 @@
 import React from "react"
 import MovieCover from "../MovieCover/MovieCover"
-import "./MovieBoard.css"
 
  const MovieBoard = ({movies, selectMovie}) => {
     let movieCovers = movies.map(movie => 

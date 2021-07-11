@@ -38,7 +38,6 @@ class Movie extends Component {
            </article>
        )
     }
-
 }
 
 export default Movie
