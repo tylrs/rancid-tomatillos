@@ -1,15 +1,11 @@
 .movie-card {
-    box-sizing: border-box;
-    border: 1px solid black;
     position: relative;
-    grid-column-end: span 1;
-    height: 13rem;
+    border: 1px solid black;
     width: 10rem;
-
+    height: 13rem;
+    img {
+        height: 100%;
+        position: absolute;
+    }
 }
 
-.movie-card img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
