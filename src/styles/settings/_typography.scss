@@ -1,0 +1,23 @@
+/* ==========================================================================
+Settings - Typography
+========================================================================== */
+
+/* === Font Import === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+
+/* === Defaults === */
+$font-family-defaults: 'Roboto', sans-serif;
+$font-size-defaults: 1rem;
+$font-style-defaults: normal;
+$font-line-height-defaults: 1rem; 
+$font-weight-defaults: normal;
+$font-style-defaults: normal;
+
+/* === Font-Family === */
+$font-family-header: 'Teko', sans-serif;
+
+/* === Font Size === */
+$font-size-header: 2rem;
+$font-size-primary: 1.2rem
+
