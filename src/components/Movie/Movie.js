@@ -8,14 +8,10 @@ class Movie extends Component {
     }
 
     render() {
-        let {backdrop_path, title, average_rating,
-            release_date, overview, genres, budget,
+        const {backdrop_path, title, average_rating,
+            release_date, overview, genres = [], budget,
              revenue, runtime, tagline} = this.props.movieInfo;
-       // console.log(genres);
-       let genreTags;
-       if (genres) {
-          genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
-       }
+       let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
        return (
            <article className='selected-movie'>
                <h2>{title}</h2>
@@ -35,6 +31,7 @@ class Movie extends Component {
            </article>
        )
     }
+    
 }
 
 export default Movie
@@ -42,12 +39,12 @@ export default Movie
 Movie.propTypes = {
     movieInfo: PropTypes.object,
     title: PropTypes.string,
-    average_rating: PropTypes.string,
+    average_rating: PropTypes.number,
     release_date: PropTypes.string,
     overview: PropTypes.string,
-    genres: PropTypes.string,
-    budget: PropTypes.string,
-    revenue: PropTypes.string,
-    runtime: PropTypes.string,
+    genres: PropTypes.array,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
     tagline: PropTypes.string
 }
