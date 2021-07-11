@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Movie extends Component {
     constructor(props) {
@@ -40,3 +41,16 @@ class Movie extends Component {
 }
 
 export default Movie
+
+Movie.propTypes = {
+    movieInfo: PropTypes.object,
+    title: PropTypes.string,
+    average_rating: PropTypes.string,
+    release_date: PropTypes.string,
+    overview: PropTypes.string,
+    genres: PropTypes.string,
+    budget: PropTypes.string,
+    revenue: PropTypes.string,
+    runtime: PropTypes.string,
+    tagline: PropTypes.string
+}
