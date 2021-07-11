@@ -1,5 +1,4 @@
 import React from "react"
-import "./MovieCover.css"
 import {Link} from 'react-router-dom';
 
 const MovieCover = ({id, poster, title, selectMovie}) => {

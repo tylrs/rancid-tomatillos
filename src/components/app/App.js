@@ -1,4 +1,3 @@
-import './App.css';
 import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';

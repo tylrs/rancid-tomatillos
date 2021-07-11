@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import './Movie.css'
 import {Link} from 'react-router-dom'
 
 class Movie extends Component {
