@@ -14,6 +14,15 @@ Tools - Mixins
   } 
 }
 
+/* === Font Palettes === */
+
+@mixin title {
+  font-size: $font-size-header;
+  font-family: $font-family-primary;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
  
 /* === Media Queries === */
 
