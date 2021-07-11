@@ -4,7 +4,7 @@ Settings - Global Variables
 ========================================================================== */
 
 @import './settings/colors';
-@import './generic/generics';
+@import './settings/typography';
 
 /* ==========================================================================
 Tools - Mixins
@@ -16,13 +16,19 @@ Tools - Mixins
 Generic - Resets & Normalize Styles
 ========================================================================== */
 
+@import './generic/generics';
 
+/* ==========================================================================
+Elements - Semanitic Bare Elements 
+========================================================================== */
+
+@import './elements/elements';
 
 /* ==========================================================================
 Objects - Undecorated Design Patterns (Component Generics)
 ========================================================================== */
 
-
+@import './objects/buttons';
 
 /* ==========================================================================
    Components -  Specific UI components
