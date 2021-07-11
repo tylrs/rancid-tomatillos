@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './Movie.css'
+import {Link} from 'react-router-dom'
 
 class Movie extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Movie extends Component {
        return (
            <article className='selected-movie'>
                <h2>{title}</h2>
-               <button onClick={()=> {this.props.unselectMovie()}}>Back</button>
+               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>Back</button></Link>
                <img src={backdrop_path} alt={title}/>
                <p>Release Date:<span>{release_date}</span></p>
                {/* <div>Genres:<span>{genreTags}</span></div> */}
