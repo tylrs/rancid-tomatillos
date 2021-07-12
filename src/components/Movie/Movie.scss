@@ -1,8 +1,71 @@
 .selected-movie {
-    @include flex(column, center);
+
+    .title-container {
+        margin: .2rem;
+        @include flex(column, center);
+    }
+    span {
+        color: $color-tertierary
+    }
+
+    .overview {
+        margin: 1rem;
+        text-align: center;
+        line-height: 1.6rem;
+        font-size: 1.6rem
+    }
+}
+
+.img-container {
+    @include flex (row-reverse, center);
+    position: relative;
+    width: 100%;
     img {
         height: 55%;
         width: 100%;
     }  
+    .date-container {
+        @include opacity($color-secondary, -0.2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: .5rem 0;
+        padding-right: 1rem;
+        border-radius: 0 5px 5px 0;
+    }
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: $borders-curve;
+        margin: .5rem;
+        width: 5rem;
+        font-size: $font-size-secondary;
+        font-family: $font-family-primary;
+        text-transform: uppercase;
+    }
 }
+
+.date-container {
+    @include opacity($color-secondary, -0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: .5rem 0;
+    padding-right: 1rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.genre-container {
+    @include flex (column, center);
+}
+
+.detail-container{
+  @include flex (row, space);
+  margin: .3rem 0;
+  > h4 {
+    font-weight: bolder;
+  }
+}
+
 
