@@ -7,20 +7,28 @@ body {
 }
 
 header {
-  margin-bottom: .8rem;
   background: $color-tertierary;
   text-align: center;
+
 }
 
 h1{
 @include title;
+@include scaling-font;
 font-style: italic;
 }
 
 h2 {
-  @include title;
+  @include subtitle;
+  @include scaling-font
+}
+
+h3 {
+  @include scaling-font;
+  font-weight: bolder;
 }
 
 p {
   font-size: $font-size-primary;
+  @include scaling-font;
 }
