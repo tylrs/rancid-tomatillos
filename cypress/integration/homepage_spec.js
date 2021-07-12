@@ -187,5 +187,12 @@ describe('Homepage User Flows', () => {
         .get('a[href="/694919"]')
         .click()
         .url().should('include', '/694919')
+        cy.contains('Money Plane')
+        cy.contains(`It's a movie!`)
+        cy.contains('Bad')
+        cy.contains('6.666666666666667')
+        cy.contains('2020-09-29')
+        cy.get('.genre-container').should('include.text', 'Drama')
+        cy.contains('Drama')
       });
 });
