@@ -14,20 +14,32 @@ class Movie extends Component {
        let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
        return (
            <article className='selected-movie'>
+           <div className='title-container'>
                <h2>{title}</h2>
-               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>Back</button></Link>
+               <h3>{tagline}</h3>
+           </div>
+            <div className="img-container">
                <img src={backdrop_path} alt={title}/>
-               <p>Release Date:<span>{release_date}</span></p>
-               <div>Genres:<span>{genreTags}</span></div>
-               <div>
-                   <p>Rating:<span>{average_rating}</span></p>
-                   <p>Duration:<span>{runtime} mins</span></p>   
-               </div>
+               <div className="date-container">
+               <h4>Release Date: <span>{release_date}</span></h4>
+            </div>
+               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link>
+            </div>
+        
+               <div className="genre-container">Genres:<span>{genreTags}</span></div>
+                <div className="detail-container">
+                    <h4>Rating:<span>{average_rating}</span></h4>
+                    <h4>Duration:<span>{runtime} mins</span></h4>
+                </div>
+                <div className="detail-container">
+                    <h4>Budget: <span>${budget}</span></h4>
+                    <h4>Revenue: <span>${revenue}</span></h4>
+                </div>
+
+
                <hr/>
-               <h3>{overview}</h3>
-               <p>Budget:<span>${budget}</span></p>
-               <p>Revenue:<span>${revenue}</span></p>
-               <p>Tagline:<span>${tagline}</span></p>
+               <p className="overview">{overview}</p>
+
            </article>
        )
     }
