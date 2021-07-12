@@ -72,4 +72,15 @@ describe('Homepage User Flows', () => {
       cy.get('a').should('have.length', 7)
     });
 
+    it('Should show an error if there is a server error', () => {
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+          statusCode: 500,
+          response: {
+              "error": "error message",
+          }
+        })
+        cy.visit('http://localhost:3000')
+        cy.contains('Rancid Tomatillos')
+        cy.contains('Oops server is down')
+      });
 });
