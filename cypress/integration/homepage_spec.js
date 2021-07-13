@@ -90,7 +90,8 @@ describe('Homepage User Flows', () => {
         })
         cy.visit('http://localhost:3000')
         cy.contains('Rancid Tomatillos')
-        cy.contains('Oops server is down')
+        cy.contains('Oops server is down! Please Refresh the page')
+        cy.get('body').should('not.contain', 'button')
     });
 
     it('Should show a full view of a movie when clicked', () => {
@@ -279,6 +280,7 @@ describe('Homepage User Flows', () => {
         .get('a[href="/movies/694919"]')
         .click()
         cy.contains('Could not retrieve selected movie, please try again')
+        cy.get('button').should('be.visible')
     });
     it('Should show an error if user visits a bad url', () => {
       cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
@@ -360,6 +362,7 @@ describe('Homepage User Flows', () => {
       })
       cy.visit('http://localhost:3000/movies/3')
       cy.contains('Could not retrieve selected movie, please try again')
+      cy.get('button').should('be.visible')
   });
     it('Should be able to click back button on error to go back to homepage', () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
@@ -542,6 +545,4 @@ describe('Homepage User Flows', () => {
         cy.get('a').should('have.length', 8)
         .url().should('includes', '/')
     });
-    
-    
 });
