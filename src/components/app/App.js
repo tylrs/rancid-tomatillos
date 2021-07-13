@@ -2,7 +2,7 @@ import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -54,35 +54,39 @@ class App extends Component {
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        <Route exact path='/' render={() => {
+        <Switch>
+          <Route exact path='/' render={() => {
+              return (
+                <>
+                  {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
+                  {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
+                  {!this.state.error && <MovieBoard 
+                    movies={this.state.movies} 
+                    selectMovie={this.selectMovie}
+                  />}
+                </>
+              )
+            }}
+          />
+          <Route exact path='/:id' render={({match}) => {
+            const id = parseInt(match.params.id);
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
-                {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
-                {!this.state.error && <MovieBoard 
-                  movies={this.state.movies} 
-                  selectMovie={this.selectMovie}
+                {!this.state.selectedMovie && !this.state.error && <p>Loading...</p>}
+                {!this.state.error && <Movie 
+                  key={this.state.selectedMovie.id} 
+                  movieInfo={this.state.selectedMovie} 
+                  selectMovie = {this.selectMovie}
+                  unselectMovie={this.unselectMovie}
+                  id={id}
                 />}
               </>
             )
-          }}
-        />
-        <Route exact path='/:id' render={({match}) => {
-          const id = parseInt(match.params.id);
-          return (
-            <>
-              {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
-              {!this.state.selectedMovie && !this.state.error && <p>Loading...</p>}
-              {!this.state.error && <Movie 
-                key={this.state.selectedMovie.id} 
-                movieInfo={this.state.selectedMovie} 
-                selectMovie = {this.selectMovie}
-                unselectMovie={this.unselectMovie}
-                id={id}
-              />}
-            </>
-          )
-        }}/>
+            }}
+          />
+          <Route render={() => <Error error="404 Not Found" leaveError={this.leaveError}/>}/>
+        </Switch>
       </main>
       )
     }
