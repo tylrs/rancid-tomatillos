@@ -12,7 +12,6 @@ import PropTypes from "prop-types"
         selectMovie={selectMovie}
       /> 
     )
-
   return (
     <section className='movies-container'>
       {movieCovers}
