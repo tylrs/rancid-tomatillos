@@ -54,17 +54,27 @@ class App extends Component {
         <header className='app-title'>
           <h1>Rancid Tomatillos</h1>
         </header>
-        <Route exact path='/' render={() =>{
-            if (this.state.error) {
-              return <Error error={this.state.error} leaveError={this.leaveError}/>
-            } else if (!this.state.movies.length) {
-              return <p>Loading...</p>
-            } else {
-              return <MovieBoard 
-                movies={this.state.movies} 
-                selectMovie={this.selectMovie}
-              />
-            }
+        <Route exact path='/' render={() => {
+            // if (this.state.error) {
+            //   return <Error error={this.state.error} leaveError={this.leaveError}/>
+            // } else if (!this.state.movies.length) {
+            //   return <p>Loading...</p>
+            // } else {
+            //   return <MovieBoard 
+            //     movies={this.state.movies} 
+            //     selectMovie={this.selectMovie}
+            //   />
+            // }
+            return (
+              <>
+                {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
+                {!this.state.movies.length && <p>Loading...</p>}
+                <MovieBoard 
+                  movies={this.state.movies} 
+                  selectMovie={this.selectMovie}
+                />
+              </>
+            )
           }}
         />
         <Route exact path='/:id' render={({match}) => {
