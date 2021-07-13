@@ -78,6 +78,7 @@ describe('Homepage User Flows', () => {
       cy.contains('Rancid Tomatillos')
       cy.contains('Loading...')
       cy.get('a').should('have.length', 8)
+      cy.get('a[href="/694919"] img').should('be.visible')
     });
 
     it('Should show an error if there is a server error', () => {
