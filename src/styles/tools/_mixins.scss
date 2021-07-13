@@ -3,6 +3,11 @@ Tools - Mixins
 ========================================================================== */
 
 
+/* === Colors === */
+@mixin opacity($color, $value) {
+  background: adjust-color($color, $alpha: $value);
+}
+
 /* === Flexbox === */
 @mixin flex($direction, $alignment, $wrap: nowrap ) {
   display: flex;
@@ -21,29 +26,28 @@ Tools - Mixins
 }
 
 
-/* === Font Palettes === */
-@mixin title {
-  font-size: $font-size-header;
+/* === Fonts === */
+@mixin scaling-font($element) {
+  font-size: clamp($element);
+}
+
+@mixin heading {
+  @include scaling-font($font-size-heading);
   font-family: $font-family-primary;
+  font-style: italic;
   text-transform: uppercase;
   letter-spacing: .1rem;
 }
 
-@mixin subtitle {
-  font-size: $font-size-header;
+@mixin subheading {
+  @include scaling-font($font-size-subheading);
   font-weight: bolder;
   text-transform: uppercase;
   letter-spacing: .1rem;
 }
 
-@mixin scaling-font {
-  font-size: calc(20px + (32 + 10) * ((100vw - 375px) / (1000 - 375)));
-}
-
-
-/* === Colors === */
-@mixin opacity($color, $value) {
-  background: adjust-color($color, $alpha: $value);
+@mixin paragraph {
+  @include scaling-font($font-size-paragraph);
 }
  
 /* === Media Queries === */
