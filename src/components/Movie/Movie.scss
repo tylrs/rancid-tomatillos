@@ -16,7 +16,7 @@
 }
 
 .img-container {
-    @include flex (row-reverse, center);
+    @include flex (row, center);
     position: relative;
     width: 100%;
     img {
