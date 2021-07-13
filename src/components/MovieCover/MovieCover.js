@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const MovieCover = ({id, poster, title}) => {
   return (
-    <Link to={`/${id}`}>
+    <Link to={`/movies/${id}`}>
       <article className='movie-card'>
         <img src={poster} alt={title}/>
       </article>

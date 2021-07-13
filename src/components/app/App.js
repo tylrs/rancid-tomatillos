@@ -68,7 +68,7 @@ class App extends Component {
               )
             }}
           />
-          <Route exact path='/:id' render={({match}) => {
+          <Route exact path='/movies/:id' render={({match}) => {
             const id = parseInt(match.params.id);
             return (
               <>
@@ -85,7 +85,7 @@ class App extends Component {
             )
             }}
           />
-          <Route render={() => <Error error="404 Not Found" leaveError={this.leaveError}/>}/>
+          <Route path=''render={() => <Error error='404 Not Found' leaveError={this.leaveError}/>}/>
         </Switch>
       </main>
       )
