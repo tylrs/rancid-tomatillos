@@ -25,7 +25,7 @@ class App extends Component {
     .then(movieData => {
       this.setState({movies: movieData.movies})
     })
-    .catch(error => this.setState({error: 'Oops server is down!'}))
+    .catch(error => this.setState({error: 'Oops server is down! Please Refresh the page'}))
   }
   
   selectMovie = (id) => {
@@ -68,7 +68,7 @@ class App extends Component {
           <Route exact path='/' render={() => {
               return (
                 <>
-                  {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
+                  {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
                   {!this.state.error && <MovieBoard 
                     movies={this.state.movies} 
