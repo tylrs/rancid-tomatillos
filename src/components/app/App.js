@@ -68,30 +68,43 @@ class App extends Component {
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
-                {!this.state.movies.length && <p>Loading...</p>}
-                <MovieBoard 
+                {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
+                {!this.state.error && <MovieBoard 
                   movies={this.state.movies} 
                   selectMovie={this.selectMovie}
-                />
+                />}
               </>
             )
           }}
         />
         <Route exact path='/:id' render={({match}) => {
           const id = parseInt(match.params.id);
-          if (this.state.error) {
-            return <Error error={this.state.error} leaveError={this.leaveError}/>
-          } else if (!this.state.selectedMovie) {
-            return <p>Loading...</p>
-          } else {
-            return <Movie 
-              key={this.state.selectedMovie.id} 
-              movieInfo={this.state.selectedMovie} 
-              selectMovie = {this.selectMovie}
-              unselectMovie={this.unselectMovie}
-              id={id}
-            />
-          }
+          // if (this.state.error) {
+          //   return <Error error={this.state.error} leaveError={this.leaveError}/>
+          // } else if (!this.state.selectedMovie) {
+          //   return <p>Loading...</p>
+          // } else {
+          //   return <Movie 
+          //     key={this.state.selectedMovie.id} 
+          //     movieInfo={this.state.selectedMovie} 
+          //     selectMovie = {this.selectMovie}
+          //     unselectMovie={this.unselectMovie}
+          //     id={id}
+          //   />
+          // }
+          return (
+            <>
+              {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
+              {!this.state.selectedMovie && !this.state.error && <p>Loading...</p>}
+              {!this.state.error && <Movie 
+                key={this.state.selectedMovie.id} 
+                movieInfo={this.state.selectedMovie} 
+                selectMovie = {this.selectMovie}
+                unselectMovie={this.unselectMovie}
+                id={id}
+              />}
+            </>
+          )
         }}/>
       </main>
       )
