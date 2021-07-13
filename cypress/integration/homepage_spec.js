@@ -78,7 +78,7 @@ describe('Homepage User Flows', () => {
       cy.contains('Rancid Tomatillos')
       cy.contains('Loading...')
       cy.get('a').should('have.length', 8)
-      cy.get('a[href="/694919"] img').should('be.visible')
+      cy.get('a[href="/movies/694919"] img').should('be.visible')
     });
 
     it('Should show an error if there is a server error', () => {
@@ -185,9 +185,9 @@ describe('Homepage User Flows', () => {
           }
         }) 
         .visit('http://localhost:3000')
-        .get('a[href="/694919"]')
+        .get('a[href="/movies/694919"]')
         .click()
-        .url().should('include', '/694919')
+        .url().should('include', '/movies/694919')
         cy.contains('Money Plane')
         cy.contains(`It's a movie!`)
         cy.contains('Bad')
@@ -276,7 +276,7 @@ describe('Homepage User Flows', () => {
             }
         })
         cy.visit('http://localhost:3000')
-        .get('a[href="/694919"]')
+        .get('a[href="/movies/694919"]')
         .click()
         cy.contains('Could not retrieve selected movie, please try again')
     });
@@ -359,7 +359,7 @@ describe('Homepage User Flows', () => {
             }
         })
         cy.visit('http://localhost:3000')
-        .get('a[href="/694919"]').click()
+        .get('a[href="/movies/694919"]').click()
         .get('button').click()
         cy.get('a').should('have.length', 8)
         .url().should('includes', '/')
@@ -456,7 +456,7 @@ describe('Homepage User Flows', () => {
             }
         })
         cy.visit('http://localhost:3000')
-        .get('a[href="/694919"]').click()
+        .get('a[href="/movies/694919"]').click()
         .get('button').click()
         cy.get('a').should('have.length', 8)
         .url().should('includes', '/')
