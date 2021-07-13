@@ -280,7 +280,7 @@ describe('Homepage User Flows', () => {
         .click()
         cy.contains('Could not retrieve selected movie, please try again')
     });
-    it('Should show an error if user visits a vad url', () => {
+    it('Should show an error if user visits a bad url', () => {
       cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
           statusCode: 200,
           body: {
@@ -359,9 +359,7 @@ describe('Homepage User Flows', () => {
           }
       })
       cy.visit('http://localhost:3000/movies/3')
-      // .get('a[href="/movies/694919"]')
-      // .click()
-      // cy.contains('Could not retrieve selected movie, please try again')
+      cy.contains('Could not retrieve selected movie, please try again')
   });
     it('Should be able to click back button on error to go back to homepage', () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
