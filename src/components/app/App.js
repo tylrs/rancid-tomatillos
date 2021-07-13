@@ -55,16 +55,6 @@ class App extends Component {
           <h1>Rancid Tomatillos</h1>
         </header>
         <Route exact path='/' render={() => {
-            // if (this.state.error) {
-            //   return <Error error={this.state.error} leaveError={this.leaveError}/>
-            // } else if (!this.state.movies.length) {
-            //   return <p>Loading...</p>
-            // } else {
-            //   return <MovieBoard 
-            //     movies={this.state.movies} 
-            //     selectMovie={this.selectMovie}
-            //   />
-            // }
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
@@ -79,19 +69,6 @@ class App extends Component {
         />
         <Route exact path='/:id' render={({match}) => {
           const id = parseInt(match.params.id);
-          // if (this.state.error) {
-          //   return <Error error={this.state.error} leaveError={this.leaveError}/>
-          // } else if (!this.state.selectedMovie) {
-          //   return <p>Loading...</p>
-          // } else {
-          //   return <Movie 
-          //     key={this.state.selectedMovie.id} 
-          //     movieInfo={this.state.selectedMovie} 
-          //     selectMovie = {this.selectMovie}
-          //     unselectMovie={this.unselectMovie}
-          //     id={id}
-          //   />
-          // }
           return (
             <>
               {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
