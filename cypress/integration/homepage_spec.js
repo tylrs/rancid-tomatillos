@@ -283,7 +283,7 @@ describe('Homepage User Flows', () => {
         cy.get('button').should('be.visible')
     });
     it('Should show an error if user visits a bad url', () => {
-      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/potato', {
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/NaN', {
           statusCode: 404,
           response: {
               "error": "error message"
