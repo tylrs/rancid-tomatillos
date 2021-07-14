@@ -4,8 +4,8 @@ Ojects - Buttons
 
 button {
   @include flex(column, center);
-  // @include opacity($color-secondary, .5);
-  color: $color-light;
   @include opacity($color-secondary, -0.5);
-  padding-top: .25rem;
+  @include button;
+  color: $color-light;
+  padding: .25rem .5rem;
 }
