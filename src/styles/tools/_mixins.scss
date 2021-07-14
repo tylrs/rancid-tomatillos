@@ -49,6 +49,10 @@ Tools - Mixins
 @mixin paragraph {
   @include scaling-font($font-size-paragraph);
 }
+
+@mixin button {
+  @include scaling-font($font-size-button)
+}
  
 /* === Media Queries === */
 @mixin phone {
