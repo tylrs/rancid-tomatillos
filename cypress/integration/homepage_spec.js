@@ -66,13 +66,8 @@ describe('moviesReq User Flows', () => {
         .get('a[href="/movies/718444"]')
         .click()
         .url().should('include', '/movies/718444')
-        cy.contains('Rogue')
-        cy.contains(`When the hunter becomes the prey.`)
-        cy.contains('7.00')
         cy.get('body').should('not.contain', 'Budget')
         cy.get('body').should('not.contain', 'Revenue')
-        cy.contains('08-20-2020')
-        cy.get('.genre-container').should('include.text', 'Action')
     });
 
     it('Should show an error if movie id is not found', () => {
