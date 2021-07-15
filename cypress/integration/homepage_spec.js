@@ -1,9 +1,10 @@
 describe('Homepage User Flows', () => {
 
-      const requestURL = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+  const homePage = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+  const moviePage  = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
 
     it('Should show all movies upon visiting the page', () => {
-      cy.intercept('GET', requestURL, {
+      cy.intercept('GET', homePage, {
         statusCode: 200,
         fixture: 'movies' 
       })
@@ -15,7 +16,7 @@ describe('Homepage User Flows', () => {
     });
 
     it('Should show an error if there is a server error', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        cy.intercept('GET', homePage, {
           statusCode: 500,
           response: {
               "error": "error message"
@@ -28,28 +29,13 @@ describe('Homepage User Flows', () => {
     });
 
     it('Should show a full view of a movie when clicked', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        cy.intercept('GET', homePage, {
           statusCode: 200,
           fixture: 'movies'
       })
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
+        cy.intercept('GET', moviePage , {
           statusCode: 200,
-          body: {
-            movie: {
-                "id": 694919,
-                "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
-                "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-                "title": "Money Plane",
-                "average_rating": 6.666666666666667,
-                "release_date": "2020-09-29",
-                "overview": "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!", 
-                genres: ["Drama", "Mystery", "Animals", "Bad"], 
-                budget:63000000, 
-                revenue:100853753, 
-                runtime:139, 
-                tagline: "It's a movie!" 
-            }
-          }
+          fixture: movie
         }) 
         .visit('http://localhost:3000')
         .get('a[href="/movies/694919"]')
@@ -65,7 +51,7 @@ describe('Homepage User Flows', () => {
       });
 
     it('Should show an error if movie id is not found', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        cy.intercept('GET', homePage, {
             statusCode: 200,
             fixture: 'movies'           
             })
@@ -93,7 +79,7 @@ describe('Homepage User Flows', () => {
       cy.get('button').should('be.visible')
   });
     it('Should be able to click back button on error to go back to homepage', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        cy.intercept('GET', homePage, {
             statusCode: 200,
             fixture: 'movies'
             })
@@ -110,7 +96,7 @@ describe('Homepage User Flows', () => {
         .url().should('includes', '/')
     });
     it('Should be able to click back button on full movie view to go back to homepage', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        cy.intercept('GET', homePage, {
             statusCode: 200,
             fixture: 'movies'
             })
