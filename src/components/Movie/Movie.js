@@ -11,40 +11,47 @@ class Movie extends Component {
         const {backdrop_path, title, average_rating,
             release_date, overview, genres = [], budget,
              revenue, runtime, tagline} = this.props.movieInfo;
-       let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)   
+       let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)
        return (
-<article className='selected-movie'>
-  <div className='title-container'>
-    <h2>{title}</h2>
-    <h3>{tagline}</h3>
-  </div>
-  <div className="img-container">
-    <img src={backdrop_path} alt={title} />
-    <div className="date-container">
-      <h4>Release Date:</h4>
-      <p>{release_date}</p>
-    </div>
-    <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
-  </div>
-  <h4>Genres:</h4>
-  <div className="genre-container">
-  {genreTags}
-  </div>
-  <div className="detail-container">
-    <h4>Rating:</h4>
-    <p>{average_rating}</p>
-    <h4>Duration:</h4>
-    <p>{runtime} mins</p>
-  </div>
-  <div className="detail-container">
-    <h4>Budget:</h4>
-    <p>${budget}</p>
-    <h4>Revenue:</h4>
-    <p>${revenue}</p>
-  </div>
-  <hr />
-  <p className="overview">{overview}</p>
-</article>
+          <article className='selected-movie'>
+            <div className='title-container'>
+              <h2>{title}</h2>
+              <h3>{tagline}</h3>
+            </div>
+            <div className="img-container">
+              <img src={backdrop_path} alt={title} />
+              <div className="date-container">
+                <h4>Release Date:</h4>
+                <p>{release_date}</p>
+              </div>
+              <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
+            </div>
+            <h4>Genres:</h4>
+            <div className="genre-container">
+            {genreTags}
+            </div>
+            <div className="detail-container">
+              <h4>Rating:</h4>
+              <p>{average_rating}</p>
+              <h4>Duration:</h4>
+              <p>{runtime} mins</p>
+            </div>
+            <div className="detail-container">
+              {!!budget && 
+              <>
+                <h4>Budget:</h4>
+                <p>${budget}</p>
+              </>
+              }
+              {!!revenue && 
+              <>
+                <h4>Revenue:</h4>
+                <p>${revenue}</p>
+              </>}
+            </div>
+            <hr />
+            <p className="overview">{overview}</p>
+          </article>
        )
     }
     
