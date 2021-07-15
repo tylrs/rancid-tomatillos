@@ -17,7 +17,12 @@ export const cleanMovie = (selectedMovie) => {
     let year = reorder.shift();
     reorder.splice(2, 0, year)
     release_date = reorder.join('-');
-    console.log(release_date)
+    if (budget) {
+        budget = budget.toLocaleString('en-us');
+    }
+    if (revenue) {
+        revenue = revenue.toLocaleString('en-us');
+    }
     return {
         backdrop_path, 
         title, 
