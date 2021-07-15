@@ -14,6 +14,6 @@ const Error = ({error, leaveError}) => {
 export default Error
 
 Error.propTypes = {
-    error: PropTypes.string,
+    error: PropTypes.string.isRequired,
     leaveError: PropTypes.func
 }

@@ -21,5 +21,5 @@ import PropTypes from "prop-types"
 export default MovieBoard
 
 MovieBoard.propTypes = {
-  movies: PropTypes.array
+  movies: PropTypes.array.isRequired
 }
