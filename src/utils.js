@@ -9,10 +9,9 @@ export const cleanMovies = (movies) => {
 }
 
 const restructureDate = (release_date) => {
-    let reorder = release_date.split('-');
-    let year = reorder.shift();
-    reorder.splice(2, 0, year);
-    return reorder.join('-');
+    let separateDates = release_date.split('-');
+    let [year, month, day] = separateDates;
+    return `${month}-${day}-${year}`;
 }
 
 export const cleanMovie = ({backdrop_path, title, average_rating,
@@ -26,6 +25,7 @@ export const cleanMovie = ({backdrop_path, title, average_rating,
     if (revenue) {
         revenue = revenue.toLocaleString('en-us');
     }
+    console.log(release_date);
     return {
         backdrop_path, 
         title, 
