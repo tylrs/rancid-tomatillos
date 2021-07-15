@@ -9,9 +9,15 @@ export const cleanMovies = (movies) => {
 }
 
 export const cleanMovie = (selectedMovie) => {
-    const {backdrop_path, title, average_rating,
+    let {backdrop_path, title, average_rating,
         release_date, overview, genres, budget,
          revenue, runtime, tagline} = selectedMovie;
+    average_rating = average_rating.toFixed(2);
+    let reorder = release_date.split('-')
+    let year = reorder.shift();
+    reorder.splice(2, 0, year)
+    release_date = reorder.join('-');
+    console.log(release_date)
     return {
         backdrop_path, 
         title, 
