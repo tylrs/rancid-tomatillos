@@ -1,10 +1,10 @@
-describe('Homepage User Flows', () => {
+describe('moviesReq User Flows', () => {
 
-  const homePage = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-  const moviePage  = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
+  const moviesReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+  const singleMovieReq  = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
 
     it('Should show all movies upon visiting the page', () => {
-      cy.intercept('GET', homePage, {
+      cy.intercept('GET', moviesReq, {
         statusCode: 200,
         fixture: 'movies' 
       })
@@ -16,7 +16,7 @@ describe('Homepage User Flows', () => {
     });
 
     it('Should show an error if there is a server error', () => {
-        cy.intercept('GET', homePage, {
+        cy.intercept('GET', moviesReq, {
           statusCode: 500,
           response: {
               "error": "error message"
@@ -29,11 +29,11 @@ describe('Homepage User Flows', () => {
     });
 
     it('Should show a full view of a movie when clicked', () => {
-        cy.intercept('GET', homePage, {
+        cy.intercept('GET', moviesReq, {
           statusCode: 200,
           fixture: 'movies'
       })
-        cy.intercept('GET', moviePage , {
+        cy.intercept('GET', singleMovieReq , {
           statusCode: 200,
           fixture: 'movie'
         }) 
@@ -51,7 +51,7 @@ describe('Homepage User Flows', () => {
       });
 
     it('Should show an error if movie id is not found', () => {
-        cy.intercept('GET', homePage, {
+        cy.intercept('GET', moviesReq, {
             statusCode: 200,
             fixture: 'movies'           
             })
@@ -78,8 +78,8 @@ describe('Homepage User Flows', () => {
       cy.contains('Could not retrieve selected movie, please try again')
       cy.get('button').should('be.visible')
   });
-    it('Should be able to click back button on error to go back to homepage', () => {
-        cy.intercept('GET', homePage, {
+    it('Should be able to click back button on error to go back to moviesReq', () => {
+        cy.intercept('GET', moviesReq, {
             statusCode: 200,
             fixture: 'movies'
             })
@@ -95,8 +95,8 @@ describe('Homepage User Flows', () => {
         cy.get('a').should('have.length', 8)
         .url().should('includes', '/')
     });
-    it('Should be able to click back button on full movie view to go back to homepage', () => {
-        cy.intercept('GET', homePage, {
+    it('Should be able to click back button on full movie view to go back to moviesReq', () => {
+        cy.intercept('GET', moviesReq, {
             statusCode: 200,
             fixture: 'movies'
             })
