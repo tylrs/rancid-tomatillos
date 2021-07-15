@@ -25,7 +25,6 @@ export const cleanMovie = ({backdrop_path, title, average_rating,
     if (revenue) {
         revenue = revenue.toLocaleString('en-us');
     }
-    console.log(release_date);
     return {
         backdrop_path, 
         title, 
