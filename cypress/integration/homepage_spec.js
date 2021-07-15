@@ -44,8 +44,10 @@ describe('moviesReq User Flows', () => {
         cy.contains('Money Plane')
         cy.contains(`It's a movie!`)
         cy.contains('Bad')
-        cy.contains('6.666666666666667')
-        cy.contains('2020-09-29')
+        cy.contains('6.67')
+        cy.contains('$63,000,000')
+        cy.contains('$100,853,753')
+        cy.contains('09-29-2020')
         cy.get('.genre-container').should('include.text', 'Drama')
         cy.contains('Drama')
       });
