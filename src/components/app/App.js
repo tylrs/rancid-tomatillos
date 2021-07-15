@@ -3,6 +3,7 @@ import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { cleanMovies } from '../../utils';
 
 class App extends Component {
   constructor() {
@@ -23,7 +24,8 @@ class App extends Component {
       return response.json()
     })
     .then(movieData => {
-      this.setState({movies: movieData.movies})
+      let cleanedMovies = cleanMovies(movieData.movies)
+      this.setState({movies: cleanedMovies});
     })
     .catch(error => this.setState({error: 'Oops server is down! Please Refresh the page'}))
   }
