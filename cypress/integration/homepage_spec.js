@@ -1,16 +1,12 @@
 describe('Homepage User Flows', () => {
-  
+
       const requestURL = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
 
     it('Should show all movies upon visiting the page', () => {
-      cy.fixture('movies').then(data => {
-
-      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      cy.intercept('GET', requestURL, {
         statusCode: 200,
-        body: {
-            
-          })
-        }
+        fixture: 'movies' 
+
       })
       cy.visit('http://localhost:3000')
       cy.contains('Rancid Tomatillos')
