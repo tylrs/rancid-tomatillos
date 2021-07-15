@@ -3,7 +3,7 @@ import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { cleanMovies } from '../../utils';
+import { cleanMovies, cleanMovie } from '../../utils';
 
 class App extends Component {
   constructor() {
