@@ -35,7 +35,7 @@ describe('Homepage User Flows', () => {
       })
         cy.intercept('GET', moviePage , {
           statusCode: 200,
-          fixture: movie
+          fixture: 'movie'
         }) 
         .visit('http://localhost:3000')
         .get('a[href="/movies/694919"]')
