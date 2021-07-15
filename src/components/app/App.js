@@ -39,8 +39,9 @@ class App extends Component {
       return response.json()
     })
     .then(selectedMovie => {
+      let cleanedMovie = cleanMovie(selectedMovie.movie);
       this.setState({
-        selectedMovie: selectedMovie.movie
+        selectedMovie: cleanedMovie
       })
     })
     .catch(error => {
