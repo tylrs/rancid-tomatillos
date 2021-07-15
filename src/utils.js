@@ -15,10 +15,9 @@ const restructureDate = (release_date) => {
     return reorder.join('-');
 }
 
-export const cleanMovie = (selectedMovie) => {
-    let {backdrop_path, title, average_rating,
-        release_date, overview, genres, budget,
-         revenue, runtime, tagline} = selectedMovie;
+export const cleanMovie = ({backdrop_path, title, average_rating,
+    release_date, overview, genres, budget,
+     revenue, runtime, tagline}) => {
     average_rating = average_rating.toFixed(2);
     release_date = restructureDate(release_date);
     if (budget) {
