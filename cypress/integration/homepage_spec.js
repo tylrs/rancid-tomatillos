@@ -2,6 +2,7 @@ describe('moviesReq User Flows', () => {
 
   const moviesReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
   const singleMovieReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
+  const singleMovieReq2 = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/718444'
 
     it('Should show all movies upon visiting the page', () => {
       cy.intercept('GET', moviesReq, {
@@ -33,7 +34,7 @@ describe('moviesReq User Flows', () => {
           statusCode: 200,
           fixture: 'movies'
       })
-        cy.intercept('GET', singleMovieReq , {
+        cy.intercept('GET', singleMovieReq, {
           statusCode: 200,
           fixture: 'movie'
         }) 
@@ -51,6 +52,28 @@ describe('moviesReq User Flows', () => {
         cy.get('.genre-container').should('include.text', 'Drama')
         cy.contains('Drama')
       });
+
+    it('Should not show budget or revenue if those values are 0', () => {
+        cy.intercept('GET', moviesReq, {
+            statusCode: 200,
+            fixture: 'movies'
+        })
+        cy.intercept('GET', singleMovieReq2, {
+            statusCode: 200,
+            fixture: 'movie2'
+        }) 
+        .visit('http://localhost:3000')
+        .get('a[href="/movies/718444"]')
+        .click()
+        .url().should('include', '/movies/718444')
+        cy.contains('Rogue')
+        cy.contains(`When the hunter becomes the prey.`)
+        cy.contains('7.00')
+        cy.get('body').should('not.contain', 'Budget')
+        cy.get('body').should('not.contain', 'Revenue')
+        cy.contains('08-20-2020')
+        cy.get('.genre-container').should('include.text', 'Action')
+    });
 
     it('Should show an error if movie id is not found', () => {
         cy.intercept('GET', moviesReq, {
