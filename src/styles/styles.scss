@@ -3,8 +3,8 @@
 Settings - Global Variables
 ========================================================================== */
 
-@import './settings/borders';
 @import './settings/colors';
+@import './settings/borders';
 @import './settings/typography';
 
 /* ==========================================================================
@@ -37,6 +37,7 @@ Objects - Undecorated Design Patterns (Component Generics)
 
 @import '../components/App/App.scss';
 @import '../components/Error/Error.scss';
+@import '../components/Header/Header.scss';
 @import '../components/Movie/Movie.scss';
 @import '../components/MovieBoard/MovieBoard.scss';
 @import '../components/MovieCover/MovieCover.scss';
