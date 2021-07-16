@@ -4,7 +4,7 @@ import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
-import {fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
+import {fetchFavorites, fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -29,9 +29,23 @@ class App extends Component {
   favoriteMovie = (id) => {
     let favorited = this.state.movies.find(movie => movie.id === id)
     submitFavoriteMovie(favorited)
-    .then(data => console.log(data))
+    .then(data => {
+      fetchFavorites()
+      .then(data => {
+        this.setState({favoriteMovies: data})
+        console.log(this.state.favoriteMovies);
+      })
+    })
+    .catch(error => {
+      this.setState({error: 'Could not retrieve selected movie, please try again'})
+    })
   }
   
+  getFavorites = () => {
+    fetchFavorites()
+
+  }
+
   selectMovie = (id) => {
     fetchMovie(id)
     .then(selectedMovie => {

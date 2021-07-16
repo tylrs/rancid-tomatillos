@@ -1,5 +1,5 @@
 export const fetchMovies = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
       if (!response.ok) {
         throw Error()
@@ -9,7 +9,7 @@ export const fetchMovies = () => {
 }
 
 export const fetchMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => {
       if (!response.ok) {
         throw Error()
@@ -19,7 +19,7 @@ export const fetchMovie = (id) => {
 }
 
 export const submitFavoriteMovie = (favorited) => {
-    fetch(`http://localhost:3001/favorites`, {
+    return fetch(`http://localhost:3001/favorites`, {
         method: 'POST',
         body: JSON.stringify(favorited),
         headers: {
@@ -27,4 +27,14 @@ export const submitFavoriteMovie = (favorited) => {
         }
       })
       .then(response => response.json())
-} 
+}
+
+export const fetchFavorites = () => {
+    return fetch(`http://localhost:3001/favorites`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error()
+      }
+      return response.json()
+    })
+}
