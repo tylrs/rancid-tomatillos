@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 class Movie extends Component {
     componentDidMount() {
@@ -24,6 +26,7 @@ class Movie extends Component {
                 <h4>Release Date:</h4>
                 <p>{release_date}</p>
               </div>
+              <FontAwesomeIcon className="favorite-button" icon={faHeart} size="3x"/>
               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
             </div>
             <h4>Genres:</h4>
