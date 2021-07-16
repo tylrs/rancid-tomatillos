@@ -70,29 +70,35 @@ Tools - Mixins
 }
  
 /* === Media Queries === */
-@mixin mobile {
+@mixin mobile($props)  {
   @media only screen and (min-width: 375px) {
     @content;
-    @include grid(mobile)
+    @if $props == grid {
+      @include grid(mobile)
+    }
   }
 }
 
-@mixin tablet {
+@mixin tablet($props)  {
   @media only screen and (min-width: 768px) {
     @content;
-    @include grid(tablet)
+    @if $props == grid {
+      @include grid(tablet)
+    }
   }
 }
 
-@mixin desktop {
+@mixin desktop($props) {
   @media only screen and (min-width: 1100px) {
     @content;
-    @include grid(desktop)
+    @if $props == grid {
+      @include grid(desktop)
+    }
   }
 }
 
-@mixin mediaQueries {
-  @include mobile;
-  @include tablet;
-  @include desktop; 
+@mixin mediaQueries($props) {
+  @include mobile($props);
+  @include tablet($props);
+  @include desktop($props); 
 }
