@@ -4,6 +4,7 @@ import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
+import {fetchMovie, fetchMovies} from '../../utilities/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -17,13 +18,7 @@ class App extends Component {
     }
 
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => {
-      if (!response.ok) {
-        throw Error()
-      }
-      return response.json()
-    })
+    fetchMovies()
     .then(movieData => {
       let cleanedMovies = cleanMovies(movieData.movies)
       this.setState({movies: cleanedMovies});
@@ -45,13 +40,7 @@ class App extends Component {
   }
   
   selectMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    .then(response => {
-      if (!response.ok) {
-        throw Error()
-      }
-      return response.json()
-    })
+    fetchMovie(id)
     .then(selectedMovie => {
       let cleanedMovie = cleanMovie(selectedMovie.movie);
       this.setState({
