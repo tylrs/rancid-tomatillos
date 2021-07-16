@@ -40,7 +40,7 @@ class App extends Component {
         'Content-type': 'application/json'
       }
     })
-    .then(response => response.json)
+    .then(response => response.json())
     .then(data => console.log(data))
   }
   
