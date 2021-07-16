@@ -5,8 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 class Movie extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isFavorited: props.isFavorited
+    }
+  }
     componentDidMount() {
        this.props.selectMovie(this.props.id)
+    }
+
+    changeFavorite() {
+      this.props.favoriteMovie(this.props.id)
+      this.setState({isFavorited: true})
     }
 
     render() {
@@ -26,7 +37,7 @@ class Movie extends Component {
                 <h4>Release Date:</h4>
                 <p>{release_date}</p>
               </div>
-              <FontAwesomeIcon className="favorite-button" icon={faHeart} size="3x" onClick={() => {this.props.favoriteMovie(this.props.id)}}/>
+              <FontAwesomeIcon className={this.state.isFavorited ? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.changeFavorite()}}/>
               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
             </div>
             <h4>Genres:</h4>
