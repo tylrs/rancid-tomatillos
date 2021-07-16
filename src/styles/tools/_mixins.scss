@@ -73,7 +73,6 @@ Tools - Mixins
 @mixin mobile {
   @media only screen and (min-width: 375px) {
     @content;
-  
     @include grid(mobile)
   }
 }
@@ -90,4 +89,10 @@ Tools - Mixins
     @content;
     @include grid(desktop)
   }
+}
+
+@mixin mediaQueries {
+  @include mobile;
+  @include tablet;
+  @include desktop; 
 }
