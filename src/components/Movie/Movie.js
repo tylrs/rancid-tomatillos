@@ -26,7 +26,7 @@ class Movie extends Component {
                 <h4>Release Date:</h4>
                 <p>{release_date}</p>
               </div>
-              <FontAwesomeIcon className="favorite-button" icon={faHeart} size="3x"/>
+              <FontAwesomeIcon className="favorite-button" icon={faHeart} size="3x" onClick={() => {this.props.favoriteMovie(this.props.id)}}/>
               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
             </div>
             <h4>Genres:</h4>
