@@ -4,7 +4,7 @@ import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
-import {fetchMovie, fetchMovies} from '../../utilities/apiCalls';
+import {fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -28,14 +28,7 @@ class App extends Component {
 
   favoriteMovie = (id) => {
     let favorited = this.state.movies.find(movie => movie.id === id)
-    fetch(`http://localhost:3001/favorites/${id}`, {
-      method: 'POST',
-      body: JSON.stringify(favorited),
-      headers: {
-        'Content-type': 'application/json'
-      }
-    })
-    .then(response => response.json())
+    submitFavoriteMovie(favorited)
     .then(data => console.log(data))
   }
   

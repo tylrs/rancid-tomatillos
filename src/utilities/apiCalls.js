@@ -17,3 +17,14 @@ export const fetchMovie = (id) => {
       return response.json()
     })
 }
+
+export const submitFavoriteMovie = (favorited) => {
+    fetch(`http://localhost:3001/favorites`, {
+        method: 'POST',
+        body: JSON.stringify(favorited),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+} 
