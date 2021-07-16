@@ -1,13 +1,10 @@
 .movies-container {
-    @include mobile;
-    @include tablet;
-    @include desktop;
+    @include mediaQueries;
     margin-top: 1rem;
     transition: ease-in-out all 500ms;
     :hover{
         transition: 500ms;
         opacity: 1;
     }
-
 }
 
