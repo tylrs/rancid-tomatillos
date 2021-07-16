@@ -1,0 +1,8 @@
+header {
+  border-bottom: $border-underline;
+  &::after {
+    content: "";
+    border-bottom: 10px solid $color-secondary  ;
+    width: 100vw;
+  }
+}
