@@ -6,13 +6,17 @@ body {
   color: $color-light;
 }
 
-header {
-  background: $color-tertierary;
-  text-align: center;
+
+main, header {
+  @include flex(column, center);
 }
 
-h1{
-@include heading;
+a  {
+  color: $color-secondary;
+}
+
+h1 {
+  @include heading;
 }
 
 h2 {
@@ -20,10 +24,11 @@ h2 {
 }
 
 h3 {
-@include paragraph;
+  @include paragraph;
   font-weight: bolder;
 }
 
 h4, p {
   @include paragraph;
 }
+
