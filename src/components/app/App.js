@@ -33,7 +33,7 @@ class App extends Component {
 
   favoriteMovie = (id) => {
     let favorited = this.state.movies.find(movie => movie.id === id)
-    fetch(`https://localhost:3001/favorites/${id}`, {
+    fetch(`http://localhost:3001/favorites/${id}`, {
       method: 'POST',
       body: JSON.stringify(favorited),
       headers: {
