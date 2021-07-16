@@ -7,6 +7,7 @@ const Header = () => {
   <NavLink to="/">
       <h1>Rancid Tomatillos</h1>
   </NavLink>
+  {/* <NavLink to="/favorites" /> */}
     </header>
   )
 }
