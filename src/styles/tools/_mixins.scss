@@ -25,6 +25,21 @@ Tools - Mixins
   }
 }
 
+/* === Grid === */
+@mixin grid($viewport) {
+  display: grid;
+  justify-items: center;
+  @if $viewport == mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1rem;
+  } @else if $viewport == tablet {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 2rem;
+  } @else {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4rem 4rem;
+  }
+}
 
 /* === Fonts === */
 @mixin scaling-font($element) {
@@ -55,16 +70,24 @@ Tools - Mixins
 }
  
 /* === Media Queries === */
-@mixin phone {
-  @media only screen and (max-width: 375px) {
+@mixin mobile {
+  @media only screen and (min-width: 375px) {
     @content;
-    font-size: calc(20px + (32 + 20) * ((100vw - 375px) / (1000 - 375)));
+  
+    @include grid(mobile)
   }
 }
 
 @mixin tablet {
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 768px) {
     @content;
-    font-size: 32px;
+    @include grid(tablet)
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1100px) {
+    @content;
+    @include grid(desktop)
   }
 }
