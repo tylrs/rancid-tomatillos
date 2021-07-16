@@ -106,6 +106,7 @@ class App extends Component {
                   movieInfo={this.state.selectedMovie} 
                   selectMovie = {this.selectMovie}
                   unselectMovie={this.unselectMovie}
+                  favoriteMovie={this.favoriteMovie}
                   id={id}
                 />}
               </>
