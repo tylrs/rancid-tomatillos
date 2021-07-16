@@ -39,6 +39,14 @@
         margin: .5rem;
         text-transform: uppercase;
     }
+    .favorite-button {
+        @include opacity($color-secondary, -0.2);
+        border-radius: $borders-curve;
+        position: absolute;
+        right: 0;
+        margin: .5rem;
+        padding: .3rem;
+    }
 }
 
 .date-container {
