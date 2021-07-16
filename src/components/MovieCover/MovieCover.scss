@@ -1,17 +1,21 @@
 .movie-card {
     position: relative;
-    opacity: .75;
-    width: 10rem;
-    height: 13rem;
+    width: clamp(10rem, 5vw, 15rem);
+    height: clamp(15rem, 5vh, 20rem);
     transition: 500ms;
-  
+    transform: translateY(10px);
     img {
         position: absolute;
         border-radius: $borders-curve;
         box-shadow: 0 0 10px  $color-dark;
         width: 100%;
         height: 100%;
+        transition: 500ms;
+        &:hover {
+            filter: brightness(1.1);
+            transition: 300ms;
+            transform: translateY(-5px) scale3d(1, 1 ,1);
+        }
     }
-  
 }
 
