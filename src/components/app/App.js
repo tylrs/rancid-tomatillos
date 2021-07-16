@@ -11,6 +11,7 @@ class App extends Component {
       this.state = {
         movies: [],
         selectedMovie: {},
+        favoriteMovies: [],
         error: ''
       }
     }
@@ -28,6 +29,19 @@ class App extends Component {
       this.setState({movies: cleanedMovies});
     })
     .catch(error => this.setState({error: 'Oops server is down! Please Refresh the page'}))
+  }
+
+  favoriteMovie = (id) => {
+    let favorited = this.state.movies.find(movie => movie.id === id)
+    fetch(`https://localhost:3001/favorites/${id}`, {
+      method: 'POST',
+      body: JSON.stringify(favorited),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+    .then(response => response.json)
+    .then(data => console.log(data))
   }
   
   selectMovie = (id) => {
