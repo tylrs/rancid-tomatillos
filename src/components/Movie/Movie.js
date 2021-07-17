@@ -5,14 +5,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 class Movie extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        message: ''
+      }
+    }
     componentDidMount() {
        this.props.selectMovie(this.props.id)
     }
 
     determineFavoriteUnfavorite() {
-      this.props.movieInfo.isFavorited
-      ? this.props.unFavoriteMovie(this.props.id)
-      : this.props.favoriteMovie(this.props.id)
+      if (this.props.movieInfo.isFavorited) {
+        this.props.unFavoriteMovie(this.props.id)
+        this.setState({message: 'Removed from Favorites'})
+        setTimeout(() => this.setState({message:''}), 3000);
+      } else {
+        this.props.favoriteMovie(this.props.id)
+        this.setState({message: 'Added to Favorites'})
+        setTimeout(() => this.setState({message:''}), 3000);
+      }
     }
 
     render() {
@@ -35,6 +47,7 @@ class Movie extends Component {
               <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
               <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
             </div>
+            {!!this.state.message && <p>{this.state.message}</p>}
             <h4>Genres:</h4>
             <div className="genre-container">
             {genreTags}
