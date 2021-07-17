@@ -4,7 +4,7 @@ import Error from '../Error/Error';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
-import {fetchFavorites, fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
+import {deleteFavoriteMovie, fetchFavorites, fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -50,10 +50,28 @@ class App extends Component {
       this.setState({error: 'Could not retrieve selected movie, please try again'})
     })
   }
+
+  unFavoriteMovie = (id) => {
+    deleteFavoriteMovie(id)
+    .then(data => {
+      console.log(data.favorites)
+      this.setState((prevState) => {
+        let updatedMovie = prevState.selectedMovie;
+        updatedMovie.isFavorited = false;
+        return ({
+          selectedMovie: updatedMovie,
+          favoriteMovies: data.favorites
+        })
+      })
+    })
+    .catch(error => {
+      this.setState({error: 'Could not Delete Movie'})
+    })
+  }
   
   getFavorites = () => {
     fetchFavorites()
-
+    
   }
 
   selectMovie = (id) => {
@@ -119,6 +137,7 @@ class App extends Component {
                   selectMovie = {this.selectMovie}
                   unselectMovie={this.unselectMovie}
                   favoriteMovie={this.favoriteMovie}
+                  unFavoriteMovie={this.unFavoriteMovie}
                   id={id}
                 />}
               </>
