@@ -24,21 +24,25 @@ class App extends Component {
       this.setState({movies: cleanedMovies});
     })
     .catch(error => this.setState({error: 'Oops server is down! Please Refresh the page'}))
+    fetchFavorites()
+    .then(data => {
+      this.setState ({
+        favoriteMovies: data.favorites
+      })
+    })
   }
 
   favoriteMovie = (id) => {
     let favorited = this.state.movies.find(movie => movie.id === id)
     submitFavoriteMovie(favorited)
     .then(() => {
-      fetchFavorites()
-      .then(data => {
-        this.setState((prevState) => {
-          let updatedMovie = prevState.selectedMovie;
-          updatedMovie.isFavorited = true;
-          return ({
-            favoriteMovies: data.favorites,
-            selectedMovie: updatedMovie
-          })
+      this.setState((prevState) => {
+        let updatedMovie = prevState.selectedMovie;
+        updatedMovie.isFavorited = true;
+        prevState.favoriteMovies.push(favorited)
+        return ({
+          selectedMovie: updatedMovie,
+          favoriteMovies: prevState.favoriteMovies
         })
       })
     })
@@ -56,7 +60,6 @@ class App extends Component {
     fetchMovie(id)
     .then(selectedMovie => {
       let isFavorite = this.state.favoriteMovies.find(movie => movie.id === id)
-      console.log('Is this movie in favorites?',isFavorite);
       if (!isFavorite) {
         selectedMovie.movie.isFavorited =  false;
       } else {
@@ -110,6 +113,7 @@ class App extends Component {
           <Route exact path='/movies/:id' render={({match}) => {
             const id = parseInt(match.params.id);
             // console.log(this.state.selectedMovie);
+            //is this in favorites if so fill in heart 
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
