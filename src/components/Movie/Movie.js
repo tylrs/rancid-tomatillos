@@ -1,21 +1,44 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import { sortGenres } from '../../utils'
+// import { sortGenres } from '../../utils'
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { sortGenres } from '../../utilities/utils';
 
 class Movie extends Component {
-  componentDidMount() {
-    this.props.selectMovie(this.props.id)
-  }
-  render() {
-      const {backdrop_path, title, average_rating,
-          release_date, overview, genres = [], budget,
-            revenue, runtime, tagline} = this.props.movieInfo;
-      let genreTags = sortGenres(genres)
-      return (         
+    constructor(props) {
+      super(props)
+      this.state = {
+        message: ''
+      }
+    }
+    componentDidMount() {
+       this.props.selectMovie(this.props.id)
+    }
+
+    determineFavoriteUnfavorite() {
+      if (this.props.movieInfo.isFavorited && !this.state.message) {
+        this.props.unFavoriteMovie(this.props.id)
+        this.setState({message: 'Removed from Favorites'})
+        setTimeout(() => this.setState({message:''}), 3000);
+      } else if (!this.props.movieInfo.isFavorited && !this.state.message){
+        this.props.favoriteMovie(this.props.id)
+        this.setState({message: 'Added to Favorites'})
+        setTimeout(() => this.setState({message:''}), 3000);
+      }
+    }
+
+    render() {
+        const {backdrop_path, title, average_rating,
+            release_date, overview, genres = [], budget,
+             revenue, runtime, tagline} = this.props.movieInfo;
+       let genreTags = sortGenres(genres);
+       return (
         <article className='selected-movie'>
         <div className="img-container">
           <img src={backdrop_path} alt={title} />
+          <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
           <div className="tagline-container">
             <h3>{tagline}</h3>
           </div>
@@ -26,6 +49,7 @@ class Movie extends Component {
             {this.props.unselectMovie()}}>back</button></Link>
         </div>
         <div className="info-container">
+        {!!this.state.message && <p>{this.state.message}</p>}
           <div className="rating-container">
             <h4>Rating:</h4>
             <p>{average_rating}</p>
@@ -55,14 +79,16 @@ class Movie extends Component {
             <p>${revenue}</p>
           </div> }
         </div>
-      {!!overview &&
-      <>
-        <hr />
-        <p className="overview">{overview}</p>
+        {!!overview &&
+        <>
+          <hr />
+          <p className="overview">{overview}</p>
         </>}
       </article> 
-    )}
-  }
+       )
+    }
+    
+}
 
 export default Movie
 
@@ -78,3 +104,7 @@ Movie.propTypes = {
     runtime: PropTypes.number,
     tagline: PropTypes.string
 }
+
+
+{/* <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+{!!this.state.message && <p>{this.state.message}</p>} */}

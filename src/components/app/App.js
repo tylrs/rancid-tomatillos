@@ -4,7 +4,8 @@ import Error from '../Error/Error';
 import Header from '../Header/Header'
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { cleanMovies, cleanMovie } from '../../utils';
+import { cleanMovies, cleanMovie } from '../../utilities/utils';
+import {deleteFavoriteMovie, fetchFavorites, fetchMovie, fetchMovies, submitFavoriteMovie} from '../../utilities/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -12,34 +13,77 @@ class App extends Component {
       this.state = {
         movies: [],
         selectedMovie: {},
+        favoriteMovies: [],
         error: ''
       }
     }
 
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => {
-      if (!response.ok) {
-        throw Error()
-      }
-      return response.json()
-    })
+    fetchMovies()
     .then(movieData => {
       let cleanedMovies = cleanMovies(movieData.movies)
       this.setState({movies: cleanedMovies});
     })
     .catch(error => this.setState({error: 'Oops server is down! Please Refresh the page'}))
+    fetchFavorites()
+    .then(data => {
+      this.setState ({
+        favoriteMovies: data.favorites
+      })
+    })
+  }
+
+  favoriteMovie = (id) => {
+    let favorited = this.state.movies.find(movie => movie.id === id)
+    submitFavoriteMovie(favorited)
+    .then(() => {
+      this.setState((prevState) => {
+        let updatedMovie = prevState.selectedMovie;
+        updatedMovie.isFavorited = true;
+        prevState.favoriteMovies.push(favorited)
+        return ({
+          selectedMovie: updatedMovie,
+          favoriteMovies: prevState.favoriteMovies
+        })
+      })
+    })
+    .catch(error => {
+      this.setState({error: 'Could not retrieve selected movie, please try again'})
+    })
+  }
+
+  unFavoriteMovie = (id) => {
+    deleteFavoriteMovie(id)
+    .then(data => {
+      console.log(data.favorites)
+      this.setState((prevState) => {
+        let updatedMovie = prevState.selectedMovie;
+        updatedMovie.isFavorited = false;
+        return ({
+          selectedMovie: updatedMovie,
+          favoriteMovies: data.favorites
+        })
+      })
+    })
+    .catch(error => {
+      this.setState({error: 'Could not Delete Movie'})
+    })
   }
   
+  getFavorites = () => {
+    fetchFavorites()
+    
+  }
+
   selectMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    .then(response => {
-      if (!response.ok) {
-        throw Error()
-      }
-      return response.json()
-    })
+    fetchMovie(id)
     .then(selectedMovie => {
+      let isFavorite = this.state.favoriteMovies.find(movie => movie.id === id)
+      if (!isFavorite) {
+        selectedMovie.movie.isFavorited =  false;
+      } else {
+        selectedMovie.movie.isFavorited =  true;
+      }
       let cleanedMovie = cleanMovie(selectedMovie.movie);
       this.setState({
         selectedMovie: cleanedMovie
@@ -91,6 +135,8 @@ class App extends Component {
                   movieInfo={this.state.selectedMovie} 
                   selectMovie = {this.selectMovie}
                   unselectMovie={this.unselectMovie}
+                  favoriteMovie={this.favoriteMovie}
+                  unFavoriteMovie={this.unFavoriteMovie}
                   id={id}
                 />}
               </>
