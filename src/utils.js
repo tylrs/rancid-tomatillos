@@ -8,6 +8,8 @@ export const cleanMovies = (movies) => {
     })
 }
 
+export const sortGenres = (genres) => genres.map((genre, index) => <p key={index}>{genre}</p>)
+
 const restructureDate = (release_date) => {
     let separateDates = release_date.split('-');
     let [year, month, day] = separateDates;
