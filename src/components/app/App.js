@@ -66,7 +66,6 @@ class App extends Component {
         selectedMovie.movie.isFavorited =  true;
       }
       let cleanedMovie = cleanMovie(selectedMovie.movie);
-      console.log(cleanedMovie.isFavorited);
       this.setState({
         selectedMovie: cleanedMovie
       })
