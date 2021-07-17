@@ -34,47 +34,56 @@ class Movie extends Component {
              revenue, runtime, tagline} = this.props.movieInfo;
        let genreTags = sortGenres(genres);
        return (
-          <article className='selected-movie'>
-            <div className='title-container'>
-              <h2>{title}</h2>
-              <h3>{tagline}</h3>
-            </div>
-            <div className="img-container">
-              <img src={backdrop_path} alt={title} />
-              <div className="date-container">
-                <h4>Release Date:</h4>
-                <p>{release_date}</p>
-              </div>
-              <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
-              <Link to='/'><button onClick={()=> {this.props.unselectMovie()}}>back</button></Link> 
-            </div>
-            {!!this.state.message && <p>{this.state.message}</p>}
+        <article className='selected-movie'>
+        <div className="img-container">
+          <img src={backdrop_path} alt={title} />
+          <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+          <div className="tagline-container">
+            <h3>{tagline}</h3>
+          </div>
+        </div>
+        <div className='title-container'>
+          <h2>{title}</h2>
+          <Link to='/'><button className="movie-back-button" onClick={()=>
+            {this.props.unselectMovie()}}>back</button></Link>
+        </div>
+        <div className="info-container">
+        {!!this.state.message && <p>{this.state.message}</p>}
+          <div className="rating-container">
+            <h4>Rating:</h4>
+            <p>{average_rating}</p>
+          </div>
+          <div className="date-container">
+            <h4>Release Date:</h4>
+            <p>{release_date}</p>
+          </div>
+        </div>
+        <div className="full-detail-container">
+          <div className="detail-container">
             <h4>Genres:</h4>
-            <div className="genre-container">
-            {genreTags}
-            </div>
-            <div className="detail-container">
-              <h4>Rating:</h4>
-              <p>{average_rating}</p>
-              <h4>Duration:</h4>
-              <p>{runtime} mins</p>
-            </div>
-            <div className="detail-container">
-              {!!budget && 
-              <>
-                <h4>Budget:</h4>
-                <p>${budget}</p>
-              </>
-              }
-              {!!revenue && 
-              <>
-                <h4>Revenue:</h4>
-                <p>${revenue}</p>
-              </>}
-            </div>
-            <hr />
-            <p className="overview">{overview}</p>
-          </article>
+            <div className="genre-container"> {genreTags} </div>
+          </div>
+          <div className="detail-container">
+            <h4>Duration:</h4>
+            <p>{runtime} mins</p>
+          </div>
+          {!!budget && 
+          <div className="detail-container">
+            <h4>Budget:</h4>
+            <p>${budget}</p>
+          </div> }
+          {!!revenue &&
+          <div className="detail-container">
+            <h4>Revenue:</h4>
+            <p>${revenue}</p>
+          </div> }
+        </div>
+        {!!overview &&
+        <>
+          <hr />
+          <p className="overview">{overview}</p>
+        </>}
+      </article> 
        )
     }
     
@@ -94,3 +103,7 @@ Movie.propTypes = {
     runtime: PropTypes.number,
     tagline: PropTypes.string
 }
+
+
+{/* <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+{!!this.state.message && <p>{this.state.message}</p>} */}
