@@ -9,8 +9,10 @@ class Movie extends Component {
        this.props.selectMovie(this.props.id)
     }
 
-    changeFavorite() {
-      this.props.favoriteMovie(this.props.id)
+    determineFavoriteUnfavorite() {
+      this.props.movieInfo.isFavorited
+      ? this.props.unFavoriteMovie(this.props.id)
+      : this.props.favoriteMovie(this.props.id)
     }
 
     render() {
