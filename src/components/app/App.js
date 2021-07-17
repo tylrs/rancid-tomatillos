@@ -88,7 +88,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log('DOES RENDER HAPPEN AGAIN WHEN FAVORITED')
     console.log("What are the favorite movies currently?",this.state.favoriteMovies);
     return (
       <main> 
@@ -111,8 +110,6 @@ class App extends Component {
           />
           <Route exact path='/movies/:id' render={({match}) => {
             const id = parseInt(match.params.id);
-            // console.log(this.state.selectedMovie);
-            //is this in favorites if so fill in heart 
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
