@@ -47,15 +47,15 @@ export const fetchFavorites = () => {
 export const deleteFavoriteMovie = (id) => {
     return fetch(`http://localhost:3001/favorites`, {
         method: 'DELETE',
-        body: JSON.stringify(id),
+        body: JSON.stringify({id}),
         headers: {
           'Content-type': 'application/json'
         }
     })
     .then(response => {
-      if (!response.ok) {
-        throw Error()
-      }
+        if (!response.ok) {
+            throw Error()
+        }
       return response.json()
     })
 }
