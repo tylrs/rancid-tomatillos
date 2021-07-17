@@ -88,7 +88,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("What are the favorite movies currently?",this.state.favoriteMovies);
     return (
       <main> 
         <header className='app-title'>
