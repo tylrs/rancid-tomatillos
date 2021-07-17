@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { sortGenres } from '../../utilities/utils';
 
 class Movie extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class Movie extends Component {
         const {backdrop_path, title, average_rating,
             release_date, overview, genres = [], budget,
              revenue, runtime, tagline} = this.props.movieInfo;
-       let genreTags = genres.map((genre, index) => <p key={index}>{genre}</p>)
+       let genreTags = sortGenres(genres);
        return (
           <article className='selected-movie'>
             <div className='title-container'>
