@@ -29,11 +29,17 @@ class App extends Component {
   favoriteMovie = (id) => {
     let favorited = this.state.movies.find(movie => movie.id === id)
     submitFavoriteMovie(favorited)
-    .then(data => {
+    .then(() => {
       fetchFavorites()
       .then(data => {
-        this.setState({favoriteMovies: data})
-        console.log(this.state.favoriteMovies);
+        this.setState((prevState) => {
+          let updatedMovie = prevState.selectedMovie;
+          updatedMovie.isFavorited = true;
+          return ({
+            favoriteMovies: data.favorites,
+            selectedMovie: updatedMovie
+          })
+        })
       })
     })
     .catch(error => {
@@ -49,7 +55,15 @@ class App extends Component {
   selectMovie = (id) => {
     fetchMovie(id)
     .then(selectedMovie => {
+      let isFavorite = this.state.favoriteMovies.find(movie => movie.id === id)
+      console.log('Is this movie in favorites?',isFavorite);
+      if (!isFavorite) {
+        selectedMovie.movie.isFavorited =  false;
+      } else {
+        selectedMovie.movie.isFavorited =  true;
+      }
       let cleanedMovie = cleanMovie(selectedMovie.movie);
+      console.log(cleanedMovie.isFavorited);
       this.setState({
         selectedMovie: cleanedMovie
       })
@@ -72,6 +86,8 @@ class App extends Component {
   }
 
   render() {
+    // console.log('DOES RENDER HAPPEN AGAIN WHEN FAVORITED')
+    console.log("What are the favorite movies currently?",this.state.favoriteMovies);
     return (
       <main> 
         <header className='app-title'>
@@ -93,6 +109,7 @@ class App extends Component {
           />
           <Route exact path='/movies/:id' render={({match}) => {
             const id = parseInt(match.params.id);
+            // console.log(this.state.selectedMovie);
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
