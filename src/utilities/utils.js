@@ -16,7 +16,7 @@ const restructureDate = (release_date) => {
 
 export const cleanMovie = ({backdrop_path, title, average_rating,
     release_date, overview, genres, budget,
-     revenue, runtime, tagline}) => {
+     revenue, runtime, tagline, isFavorited}) => {
     average_rating = average_rating.toFixed(2);
     release_date = restructureDate(release_date);
     if (budget) {
@@ -35,6 +35,7 @@ export const cleanMovie = ({backdrop_path, title, average_rating,
         budget,
         revenue, 
         runtime, 
-        tagline
+        tagline,
+        isFavorited
     }
 }
