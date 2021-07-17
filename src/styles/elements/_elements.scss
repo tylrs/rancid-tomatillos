@@ -6,9 +6,12 @@ body {
   color: $color-light;
 }
 
-
 main, header {
   @include flex(column, center);
+}
+
+article {
+  @include mediaQueries(size);
 }
 
 a  {
@@ -32,3 +35,12 @@ h4, p {
   @include paragraph;
 }
 
+button {
+  @include flex(column, center);
+  @include button;
+  @include opacity($color-secondary, -0.5);
+  border: $color-light;
+  border-radius: $borders-curve-strong;
+  padding: .3rem .3rem;
+  color: $color-light;
+}
