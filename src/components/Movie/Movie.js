@@ -16,11 +16,11 @@ class Movie extends Component {
     }
 
     determineFavoriteUnfavorite() {
-      if (this.props.movieInfo.isFavorited) {
+      if (this.props.movieInfo.isFavorited && !this.state.message) {
         this.props.unFavoriteMovie(this.props.id)
         this.setState({message: 'Removed from Favorites'})
         setTimeout(() => this.setState({message:''}), 3000);
-      } else {
+      } else if (!this.props.movieInfo.isFavorited && !this.state.message){
         this.props.favoriteMovie(this.props.id)
         this.setState({message: 'Added to Favorites'})
         setTimeout(() => this.setState({message:''}), 3000);
