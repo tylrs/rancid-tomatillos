@@ -26,11 +26,32 @@ export const submitFavoriteMovie = (favorited) => {
           'Content-type': 'application/json'
         }
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw Error()
+        }
+        return response.json()
+      })
 }
 
 export const fetchFavorites = () => {
     return fetch(`http://localhost:3001/favorites`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error()
+      }
+      return response.json()
+    })
+}
+
+export const deleteFavoriteMovie = (id) => {
+    return fetch(`http://localhost:3001/favorites`, {
+        method: 'DELETE',
+        body: JSON.stringify(id),
+        headers: {
+          'Content-type': 'application/json'
+        }
+    })
     .then(response => {
       if (!response.ok) {
         throw Error()
