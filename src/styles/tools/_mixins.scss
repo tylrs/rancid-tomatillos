@@ -19,6 +19,9 @@ Tools - Mixins
   } @else if $alignment == space {
     align-items: center;
     justify-content: space-around;
+  } @else if $alignment == start {
+    align-items: center;
+    justify-content: flex-start;
   } @else if $alignment == end {
     align-items: center;
     justify-content: flex-end;
@@ -48,6 +51,8 @@ Tools - Mixins
 
 @mixin heading {
   @include scaling-font($font-size-heading);
+  color: $color-light;
+  text-shadow: 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark;
   font-family: $font-family-primary;
   font-style: italic;
   text-transform: uppercase;
@@ -63,10 +68,12 @@ Tools - Mixins
 
 @mixin paragraph {
   @include scaling-font($font-size-paragraph);
+  
 }
 
 @mixin button {
-  @include scaling-font($font-size-button)
+  @include scaling-font($font-size-button);
+  text-transform: capitalize;
 }
  
 /* === Media Queries === */
@@ -75,6 +82,11 @@ Tools - Mixins
     @content;
     @if $props == grid {
       @include grid(mobile)
+    } @else if $props == size {
+      width: 98%;
+      transition: 250ms;
+    } @else if $props == fullMovie {
+      height: 15rem;
     }
   }
 }
@@ -84,7 +96,13 @@ Tools - Mixins
     @content;
     @if $props == grid {
       @include grid(tablet)
+    } @else if $props == size {
+      transition: 250ms;
+      width: 95%;
+    } @else if $props == fullMovie {
+      height: 20rem;
     }
+    
   }
 }
 
@@ -93,6 +111,13 @@ Tools - Mixins
     @content;
     @if $props == grid {
       @include grid(desktop)
+    } @else if $props == size {
+      transition: 250ms;
+      width: 90%;
+    } @else if $props == fullMovie {
+      height: 20rem;
+    } @else if $props == fullMovieDetails {
+    @include flex(row, center)
     }
   }
 }
