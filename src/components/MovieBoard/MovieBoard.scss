@@ -1,6 +1,10 @@
 .movies-container {
-    display: grid;
-    justify-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    gap: .8rem;
+    @include mediaQueries(grid);
+    margin-top: 1rem;
+    transition: ease-in-out all 500ms;
+    :hover{
+        transition: 500ms;
+        opacity: 1;
+    }
 }
+

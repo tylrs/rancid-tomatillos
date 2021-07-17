@@ -2,49 +2,32 @@
 /* ==========================================================================
 Settings - Global Variables
 ========================================================================== */
-
-@import './settings/borders';
 @import './settings/colors';
+@import './settings/borders';
 @import './settings/typography';
 
 /* ==========================================================================
 Tools - Mixins
 ========================================================================== */
-
 @import './tools/mixins';
 
 /* ==========================================================================
 Generic - Resets & Normalize Styles
 ========================================================================== */
-
 @import './generics/generics';
 
 /* ==========================================================================
 Elements - Semanitic Bare Elements 
 ========================================================================== */
-
 @import './elements/elements';
-
-/* ==========================================================================
-Objects - Undecorated Design Patterns (Component Generics)
-========================================================================== */
-
-@import './objects/buttons';
 
 /* ==========================================================================
    Components -  Specific UI components
 ========================================================================== */
-
 @import '../components/App/App.scss';
 @import '../components/Error/Error.scss';
+@import '../components/Header/Header.scss';
 @import '../components/Movie/Movie.scss';
 @import '../components/MovieBoard/MovieBoard.scss';
 @import '../components/MovieCover/MovieCover.scss';
-
-/* ==========================================================================
-   Utilities -  Utility/Helper functions that override.
-========================================================================== */
-
-
-
 

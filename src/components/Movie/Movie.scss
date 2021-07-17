@@ -1,43 +1,80 @@
 .selected-movie {
-
+    @include opacity($color-tertierary, -0.8);
+    margin: .5rem;
+    border: 3px solid $color-light;
+    border-radius: $borders-curve-strong;
+    padding-bottom: .3rem;
     .title-container {
+        @include opacity($color-dark, -0.8);
+        @include flex(row, center);
+        position: relative;
         margin: .2rem;
-        @include flex(column, center);
-    }
-    span {
-        color: $color-tertierary
-    }
-
+        .movie-back-button {
+            position: absolute;
+            top: 10%;
+            right: 1%;
+        }
+    } 
     .overview {
         margin: 1rem;
         text-align: center;
+        h3 {
+            margin-left: .5rem;
+        }
     }
-}
-
-.img-container {
-    @include flex (row, center);
-    position: relative;
-    width: 100%;
-    img {
-        height: 55%;
-        width: 100%;
-    }  
-    .date-container {
+    .img-container {
+        @include mediaQueries(fullMovie);
+        @include flex (row, center);
+        position: relative;
+        img {
+            border-radius: 3px 3px 0 0 ;
+            transition: 250ms;
+            height: 100%;
+            width: 100%;
+        }  
+        .tagline-container {
+            @include opacity($color-secondary, -0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: .5rem 0;
+            border-radius: 0 5px 5px 0;
+            padding-right: 1rem;
+        }
+    }
+    .info-container {
+        @include flex (row, space);
         @include opacity($color-secondary, -0.2);
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: .5rem 0;
-        padding-right: 1rem;
-        border-radius: 0 5px 5px 0;
+        > div {
+            @include flex (row, center);
+            h4 {
+              margin: .1rem .4rem;
+            }
+            p {
+              margin-left: .2rem;
+            }
+        }
     }
-    button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-radius: $borders-curve;
-        margin: .5rem;
-        text-transform: uppercase;
+    .full-detail-container {
+        @include mediaQueries(fullMovieDetails);
+        .genre-container {
+            @include flex (row, center);
+            > h4 {
+                font-weight: bolder;
+              }
+            > p {
+                margin: 0 .3rem;
+            }
+        }
+        .detail-container{
+            @include flex (column, start);
+            @include desktop(fullMovieDetails);
+            margin: .3rem;
+            > h4 {
+                margin-right: .5rem;
+                font-weight: bolder;
+            }
+        }
     }
     .favorite-button {
         @include opacity($color-secondary, -0.2);
@@ -50,28 +87,6 @@
     .favorited {
         color: red;
     }
-}
-
-.date-container {
-    @include opacity($color-secondary, -0.2);
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: .5rem 0;
-    padding-right: 1rem;
-    border-radius: 0 5px 5px 0;
-}
-
-.genre-container {
-    @include flex (column, center);
-}
-
-.detail-container{
-  @include flex (row, space);
-  margin: .3rem 0;
-  > h4 {
-    font-weight: bolder;
-  }
 }
 
 

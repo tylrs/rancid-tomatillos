@@ -6,13 +6,20 @@ body {
   color: $color-light;
 }
 
-header {
-  background: $color-tertierary;
-  text-align: center;
+main, header {
+  @include flex(column, center);
 }
 
-h1{
-@include heading;
+article {
+  @include mediaQueries(size);
+}
+
+a  {
+  color: $color-secondary;
+}
+
+h1 {
+  @include heading;
 }
 
 h2 {
@@ -20,10 +27,20 @@ h2 {
 }
 
 h3 {
-@include paragraph;
+  @include paragraph;
   font-weight: bolder;
 }
 
 h4, p {
   @include paragraph;
+}
+
+button {
+  @include flex(column, center);
+  @include button;
+  @include opacity($color-secondary, -0.5);
+  border: $color-light;
+  border-radius: $borders-curve-strong;
+  padding: .1rem .5rem;
+  color: $color-light;
 }

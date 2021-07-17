@@ -1,0 +1,12 @@
+header {
+  @include opacity ($color-dark, -0.5);
+  border-bottom: $border-underline;
+  &::after {
+    content: "";
+    border-bottom: 1rem solid $color-light;
+    width: 100vw;
+  }
+  h1 {
+    align-self: center;
+  }
+}

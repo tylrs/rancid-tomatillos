@@ -1,6 +1,7 @@
 import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
+import Header from '../Header/Header'
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
@@ -108,9 +109,7 @@ class App extends Component {
   render() {
     return (
       <main> 
-        <header className='app-title'>
-          <h1>Rancid Tomatillos</h1>
-        </header>
+      <Header />
         <Switch>
           <Route exact path='/' render={() => {
               return (
