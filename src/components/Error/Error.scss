@@ -1,3 +1,22 @@
-.error > p {
-  @include heading;
+.error {
+  @include flex(column, center);
+  // @include opacity($color-tertierary, -0.8);
+  margin-top: 1rem;
+  border-radius: $borders-curve-strong;
+  width: 20rem;
+  button {
+    margin-bottom: 1rem;
+    padding: .5rem 1rem;
+  
+  }
+  p {
+    @include opacity($color-light, -0.8);
+    @include heading;
+    text-shadow: none;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100vw;
+    padding-top: .5rem;
+    text-align: center;
+  }
 }
