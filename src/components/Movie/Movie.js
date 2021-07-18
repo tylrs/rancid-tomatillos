@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-// import { sortGenres } from '../../utils'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -104,7 +103,3 @@ Movie.propTypes = {
     runtime: PropTypes.number,
     tagline: PropTypes.string
 }
-
-
-{/* <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
-{!!this.state.message && <p>{this.state.message}</p>} */}
