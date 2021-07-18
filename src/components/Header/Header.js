@@ -18,7 +18,6 @@ const Header = () => {
   <NavLink to="/favorites">
   <FontAwesomeIcon icon={faHeart} />
   </NavLink>
-  {/* <NavLink to="/favorites" /> */}
     </header>
   )
 }
