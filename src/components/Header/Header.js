@@ -10,13 +10,14 @@ const Header = () => {
     <header>
 
   <NavLink to="/">
-  <FontAwesomeIcon icon={faBackward} />
+  <FontAwesomeIcon className="icon" icon={faBackward} />
   </NavLink>
+
   <NavLink to="/">
   <h1>Rancid Tomatillos</h1>
   </NavLink>
   <NavLink to="/favorites">
-  <FontAwesomeIcon icon={faHeart} />
+  <FontAwesomeIcon className="icon" icon={faHeart} />
   </NavLink>
     </header>
   )
