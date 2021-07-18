@@ -111,15 +111,16 @@ class App extends Component {
       <main> 
       <Header />
         <Switch>
-          <Route exact path='/' render={() => {
+          <Route exact path='/' render={({match}) => {
+              const homePath = match.path
               return (
                 <>
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
-                  {!this.state.error && <MovieBoard 
+                  {!this.state.error && (<Header path={homePath} />,<MovieBoard 
                     movies={this.state.movies} 
                     selectMovie={this.selectMovie}
-                  />}
+                  />)}
                 </>
               )
             }}
@@ -143,16 +144,18 @@ class App extends Component {
             )
             }}
           />
-          <Route exact path='/favorites' render={() => {
+          <Route exact path='/favorites' render={({match}) => {
+            const favoritePath = match.path
+            console.log(favoritePath)
             return (
               <>
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
                   {!this.state.favoriteMovies.length && <p>No Movies!</p>}
-                  {!this.state.error && <MovieBoard 
+                  {!this.state.error && (<Header path={favoritePath} />, <MovieBoard 
                     movies={this.state.favoriteMovies} 
                     selectMovie={this.selectMovie}
-                  />}
+                  />)}
                 </>
             )
             }}
