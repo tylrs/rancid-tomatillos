@@ -143,6 +143,20 @@ class App extends Component {
             )
             }}
           />
+          <Route exact path='/favorites' render={() => {
+            return (
+              <>
+                  {this.state.error && <Error error={this.state.error} />}
+                  {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
+                  {!this.state.favoriteMovies.length && <p>No Movies!</p>}
+                  {!this.state.error && <MovieBoard 
+                    movies={this.state.favoriteMovies} 
+                    selectMovie={this.selectMovie}
+                  />}
+                </>
+            )
+            }}
+          />
           <Route path=''render={() => <Error error='404 Not Found' leaveError={this.leaveError}/>}/>
         </Switch>
       </main>
