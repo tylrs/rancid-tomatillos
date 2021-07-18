@@ -12,7 +12,7 @@ describe('moviesReq User Flows', () => {
       cy.visit('http://localhost:3000')
       cy.contains('Rancid Tomatillos')
       cy.contains('Loading...')
-      cy.get('a').should('have.length', 8)
+      cy.get('a').should('have.length', 9)
       cy.get('a[href="/movies/694919"] img').should('be.visible')
     });
 
@@ -114,7 +114,7 @@ describe('moviesReq User Flows', () => {
         cy.visit('http://localhost:3000')
         .get('a[href="/movies/694919"]').click()
         .get('button').click()
-        cy.get('a').should('have.length', 8)
+        cy.get('a').should('have.length', 9)
         .url().should('includes', '/')
     });
 
@@ -130,7 +130,7 @@ describe('moviesReq User Flows', () => {
         cy.visit('http://localhost:3000')
         .get('a[href="/movies/694919"]').click()
         .get('button').click()
-        cy.get('a').should('have.length', 8)
+        cy.get('a').should('have.length', 9)
         .url().should('includes', '/')
     });
 });
