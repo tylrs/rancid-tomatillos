@@ -1,4 +1,4 @@
-describe('moviesReq User Flows', () => {
+describe('Homepage User Flows', () => {
 
   const moviesReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
   const singleMovieReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
