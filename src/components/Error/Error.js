@@ -6,7 +6,10 @@ const Error = ({error, leaveError}) => {
     return (
         <section className="error">
             <p>{error}</p>
-            {leaveError && <Link to='/'><button onClick={() => {leaveError()}}>Back</button></Link>}
+            {leaveError && 
+            <Link to='/'>
+            <button onClick={() => {leaveError()}}>Back</button>
+            </Link>}
         </section>
     )
 }
