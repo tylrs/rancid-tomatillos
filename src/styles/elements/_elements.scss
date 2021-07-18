@@ -16,6 +16,12 @@ article {
 
 a  {
   color: $color-secondary;
+  button:hover {
+    @include opacity($color-secondary, -0.5);
+    transition: 250ms;
+    border: $color-light 1.5px solid;
+    text-shadow: 0 0 1.5px $color-light;
+  }
 }
 
 h1 {
@@ -38,9 +44,11 @@ h4, p {
 button {
   @include flex(column, center);
   @include button;
-  @include opacity($color-secondary, -0.5);
-  border: $color-light;
+  @include opacity($color-secondary, -0.7);
+  border: $color-secondary 1.5px solid;
   border-radius: $borders-curve-strong;
   padding: .1rem .5rem;
   color: $color-light;
+  transition: 250ms;
+
 }
