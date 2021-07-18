@@ -105,4 +105,107 @@ describe('Favorite Movies User Flow', () => {
         cy.get('body')
         .contains('Removed from Favorites')
     })
+    it('Should be able to see an error message if post was not successful', () => {
+        cy.intercept('GET', singleMovieReq, {
+            statusCode: 200,
+            fixture: 'movie'
+          }) 
+        cy.intercept('GET', moviesReq, {
+            statusCode: 200,
+            fixture: 'movies'
+        }) 
+        let count = 0;  
+
+        cy.intercept('GET', favoriteMoviesReq, (req) => {   
+        req.reply(res => {     
+            if (count === 0) {
+            count += 1;
+            res.send({"favorites": []})
+            } else {
+            res.send({"favorites": [
+                    {
+                        "id": 694919,
+                        "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+                        "title": "Money Plane"
+                    }
+                ]})
+            }
+        }); 
+        });
+        cy.intercept('POST', favoriteMoviesReq, {
+            statusCode: 422,
+            response: {
+                "error": "error message"
+            }
+        }) 
+        cy.LoadHome()
+        .get('a[href="/movies/694919"]')
+        .click()
+        cy.get('.svg-inline--fa')
+        .click()
+        cy.get('body')
+        .contains('Could not add to favorites, please try again')
+    })
+    it('Should be able to see an error message if delete was not successful ', () => {
+        cy.intercept('GET', singleMovieReq, {
+            statusCode: 200,
+            fixture: 'movie'
+          }) 
+        cy.intercept('GET', moviesReq, {
+            statusCode: 200,
+            fixture: 'movies'
+        }) 
+        cy.intercept('GET', favoriteMoviesReq, {
+            statusCode: 200,
+            body: {
+                "favorites": [
+                    {
+                        "id": 694919,
+                        "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+                        "title": "Money Plane"
+                    }
+                ]
+            }
+        }) 
+        cy.intercept('DELETE', favoriteMoviesReq, {
+            statusCode: 500,
+            response: {
+                "error": "error message"
+            }
+        })  
+        cy.LoadHome()
+        .get('a[href="/movies/694919"]')
+        .click()
+        cy.get('.svg-inline--fa')
+        .click()
+        cy.get('body')
+        .contains('Could not delete movie')
+    })
+    it('Should be able to see a heart filled in if a movie was previously favorited', () => {
+        cy.intercept('GET', singleMovieReq, {
+            statusCode: 200,
+            fixture: 'movie'
+          }) 
+        cy.intercept('GET', moviesReq, {
+            statusCode: 200,
+            fixture: 'movies'
+        }) 
+        cy.intercept('GET', favoriteMoviesReq, {
+            statusCode: 200,
+            body: {
+                "favorites": [
+                    {
+                        "id": 694919,
+                        "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+                        "title": "Money Plane"
+                    }
+                ]
+            }
+        }) 
+        cy.LoadHome()
+        .get('a[href="/movies/694919"]')
+        .click()
+        cy.get('.svg-inline--fa')
+        .should('have.css', 'color', 'rgb(255, 0, 0)')
+    })
 })
