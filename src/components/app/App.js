@@ -48,7 +48,7 @@ class App extends Component {
       })
     })
     .catch(error => {
-      this.setState({error: 'Could not retrieve selected movie, please try again'})
+      this.setState({error: 'Could not add to favorites, please try again'})
     })
   }
 
