@@ -66,7 +66,7 @@ class App extends Component {
       })
     })
     .catch(error => {
-      this.setState({error: 'Could not Delete Movie'})
+      this.setState({error: 'Could not delete movie'})
     })
   }
   
