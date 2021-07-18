@@ -10,7 +10,13 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('LoadHome', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 200,
+        fixture: 'movies' 
+      })
+    cy.visit('http://localhost:3000')
+})
 //
 //
 // -- This is a child command --
