@@ -1,6 +1,5 @@
 .error {
   @include flex(column, center);
-  // @include opacity($color-tertierary, -0.8);
   margin-top: 2rem;
   button {
     margin-bottom: 1rem;
