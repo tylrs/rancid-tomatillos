@@ -5,22 +5,29 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faBackward } from '@fortawesome/free-solid-svg-icons'
 
 
-const Header = () => {
+const Header = ({path}) => {
+console.log(path)
+
   return (
     <header>
 
+{ !!path === "/" && 
   <NavLink to="/">
   <FontAwesomeIcon className="icon" icon={faBackward} />
-  </NavLink>
+  </NavLink> }
 
   <NavLink to="/">
   <h1>Rancid Tomatillos</h1>
   </NavLink>
-  <NavLink to="/favorites">
+
+{ path !== "/favorites"  && <NavLink to="/favorites">
   <FontAwesomeIcon className="icon" icon={faHeart} />
-  </NavLink>
+  </NavLink> }
+
+    {/* {console.log(path === "/favorites")} */}
+
     </header>
-  )
+  ) 
 }
 
 export default Header;
