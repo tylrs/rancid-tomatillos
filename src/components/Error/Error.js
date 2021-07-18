@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 const Error = ({error, leaveError}) => {
     return (
-        <div className="error">
+        <section className="error">
             <p>{error}</p>
             {leaveError && <Link to='/'><button onClick={() => {leaveError()}}>Back</button></Link>}
-        </div>
+        </section>
     )
 }
 
