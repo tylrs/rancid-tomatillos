@@ -78,11 +78,9 @@
 @mixin mobile($props) {
   @media only screen and (min-width: 375px) {
     @content;
+    transition: 100ms;
     @if $props==grid {
       @include grid(mobile);
-    } @else if $props==size {
-      width: 98%;
-      transition: 250ms;
     } @else if $props==fullMovie {
       height: 15rem;
     }
@@ -92,13 +90,11 @@
 @mixin tablet($props) {
   @media only screen and (min-width: 768px) {
     @content;
+    transition: 100ms;
     @if $props==grid {
       @include grid(tablet);
-    } @else if $props==size {
-      transition: 250ms;
-      width: 95%;
     } @else if $props==fullMovie {
-      height: 20rem;
+      height: 25rem;
     } @else if $props==fullMovieDetails {
       @include flex(row, space, wrap);
     }
@@ -108,13 +104,11 @@
 @mixin desktop($props) {
   @media only screen and (min-width: 1100px) {
     @content;
+    transition: 100ms;
     @if $props==grid {
       @include grid(desktop);
-    } @else if $props==size {
-      transition: 250ms;
-      width: 90%;
     } @else if $props==fullMovie {
-      height: 20rem;
+      height: 30rem;
     } @else if $props==fullMovieDetails {
       @include flex(row, space, wrap);
     }
