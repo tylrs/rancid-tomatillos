@@ -1,6 +1,6 @@
 header {
   @include flex(row, space);
-  @include opacity ($color-dark, -0.5);
+  @include opacity($color-dark, -0.5);
   border-bottom: $border-underline;
   width: 100%;
   h1 {
@@ -9,7 +9,10 @@ header {
     &:hover {
       transition: 300ms;
       text-shadow: 0 0 3px $color-light;
-      transform: scale(1.01) ;
+      transform: scale(1.01);
     }
+  }
+  .icon-none {
+    visibility: hidden;
   }
 }
