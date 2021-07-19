@@ -1,4 +1,4 @@
-describe('Favorite Movies User Flow', () => {
+describe('Favorite a Movie User Flow', () => {
     const singleMovieReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
     const moviesReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
     const favoriteMoviesReq = 'http://localhost:3001/favorites'
@@ -24,7 +24,6 @@ describe('Favorite Movies User Flow', () => {
         cy.get('.svg-inline--fa')
         .should('have.css', 'background-color', 'rgba(147, 178, 190, 0.8)')
     })
-
     it('Should be able to click on a heart and favorite a movie', () => {
         cy.intercept('GET', singleMovieReq, {
             statusCode: 200,
