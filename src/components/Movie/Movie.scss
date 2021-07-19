@@ -5,13 +5,21 @@
   border-radius: $borders-curve;
   padding-bottom: 0.3rem;
   .title-container {
-    @include flex(row, center);
+    @include flex(row, end);
     position: relative;
     border-top: 2px solid $color-light;
     width: 100%;
+    height: clamp($font-size-heading);
     .movie-back-button {
       @include mediaQueries(btn-inset);
+      transition: 100ms;
+      margin-right: 2rem;
+    }
+    h2 {
+      @include heading;
       position: absolute;
+      right: 45%;
+      margin-top: .6rem;
     }
   }
   .overview {
