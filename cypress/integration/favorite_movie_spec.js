@@ -253,5 +253,7 @@ describe('Favorite a Movie User Flow', () => {
         cy.LoadHome()
         cy.get('.svg-inline--fa')
         .click()
+        cy.get('body')
+        .contains('No Movies!')
     })
 })
