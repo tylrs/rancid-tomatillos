@@ -2,17 +2,17 @@
   @include opacity($color-tertierary, -0.8);
   margin: 0.5rem;
   border: 3px solid $color-light;
-  border-radius: $borders-curve-strong;
+  border-radius: $borders-curve;
   padding-bottom: 0.3rem;
   .title-container {
-    @include opacity($color-dark, -0.8);
     @include flex(row, center);
+    border-top: 2px solid $color-light;
+    width: 100%;
     position: relative;
-    margin: 0.2rem;
     .movie-back-button {
+      @include mediaQueries(btn-inset);
       position: absolute;
-      top: 10%;
-      right: 1%;
+
     }
   }
   .overview {
