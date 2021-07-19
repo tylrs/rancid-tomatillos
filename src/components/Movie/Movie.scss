@@ -1,92 +1,118 @@
 .selected-movie {
-    @include opacity($color-tertierary, -0.8);
-    margin: .5rem;
-    border: 3px solid $color-light;
+  @include opacity($color-tertierary, -0.8);
+  margin: 0.5rem;
+  border: 3px solid $color-light;
+  border-radius: $borders-curve;
+  padding-bottom: 0.3rem;
+  .title-container {
+    @include flex(row, center);
+    position: relative;
+    border-top: 2px solid $color-light;
+    width: 100%;
+    .movie-back-button {
+      @include mediaQueries(btn-inset);
+      position: absolute;
+    }
+  }
+  .overview {
+    margin: 1rem;
+    text-align: center;
+    h3 {
+      margin-left: 0.5rem;
+    }
+  }
+  .img-container {
+    @include mediaQueries(fullMovie);
+    @include flex(row, center);
+    position: relative;
+    img {
+      transition: 250ms;
+      border-radius: 3px 3px 0 0;
+      width: 100%;
+      height: 100%;
+    }
+    .tagline-container {
+      @include opacity($color-secondary, -0.2);
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0.5rem 0;
+      border-radius: 0 5px 5px 0;
+      padding-right: 1rem;
+      h3 {
+        padding-left: 0.4rem;
+      }
+    }
+    .message-container {
+      @include mediaQueries(inset);
+      @include animation-slide;
+      position: absolute;
+      top: 15%;
+      right: 0;
+      opacity: 1;
+      animation: slide 3s;
+      border-radius: 5px;
+      padding: 0 1rem;
+      background: $color-secondary;
+    }
+  }
+  .info-container {
+    @include flex(row, space);
+    @include opacity($color-secondary, -0.2);
+    > div {
+      @include flex(row, center);
+      h4 {
+        margin: 0.1rem 0.4rem;
+      }
+      p {
+        margin-left: 0.2rem;
+      }
+    }
+  }
+  .full-detail-container {
+    @include mediaQueries(fullMovieDetails);
+    .genre-container {
+      @include flex(row, center);
+      > h4 {
+        font-weight: bolder;
+      }
+      > p {
+        margin: 0 0.3rem;
+      }
+    }
+    .detail-container {
+      @include flex(column, start);
+      @include desktop(fullMovieDetails);
+      margin: 0.3rem;
+      > h4 {
+        margin-right: 0.5rem;
+        font-weight: bolder;
+      }
+    }
+  }
+  .favorite-button {
+    @include opacity($color-secondary, -0.2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 300ms;
+    margin: 0.5rem;
     border-radius: $borders-curve-strong;
-    padding-bottom: .3rem;
-    .title-container {
-        @include opacity($color-dark, -0.8);
-        @include flex(row, center);
-        position: relative;
-        margin: .2rem;
-        .movie-back-button {
-            position: absolute;
-            top: 10%;
-            right: 1%;
-        }
-    } 
-    .overview {
-        margin: 1rem;
-        text-align: center;
-        h3 {
-            margin-left: .5rem;
-        }
+    padding: 0.3rem;
+    &:hover {
+      transform: scale(1.01);
+      transition: 300ms;
+      filter: drop-shadow(0 0 2.5px $color-favorite);
     }
-    .img-container {
-        @include mediaQueries(fullMovie);
-        @include flex (row, center);
-        position: relative;
-        img {
-            border-radius: 3px 3px 0 0 ;
-            transition: 250ms;
-            height: 100%;
-            width: 100%;
-        }  
-        .tagline-container {
-            @include opacity($color-secondary, -0.2);
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: .5rem 0;
-            border-radius: 0 5px 5px 0;
-            padding-right: 1rem;
-        }
+  }
+  .favorited {
+    @extend .favorite-button;
+    transition: 300ms;
+    color: $color-favorite;
+    &:hover {
+      transform: scale(1.01);
+      transition: 300ms;
+      filter: drop-shadow(0 0 2.5px $color-light);
     }
-    .info-container {
-        @include flex (row, space);
-        @include opacity($color-secondary, -0.2);
-        > div {
-            @include flex (row, center);
-            h4 {
-              margin: .1rem .4rem;
-            }
-            p {
-              margin-left: .2rem;
-            }
-        }
-    }
-    .full-detail-container {
-        @include mediaQueries(fullMovieDetails);
-        .genre-container {
-            @include flex (row, center);
-            > h4 {
-                font-weight: bolder;
-              }
-            > p {
-                margin: 0 .3rem;
-            }
-        }
-        .detail-container{
-            @include flex (column, start);
-            @include desktop(fullMovieDetails);
-            margin: .3rem;
-            > h4 {
-                margin-right: .5rem;
-                font-weight: bolder;
-            }
-        }
-    }
-    .favorite-button {
-        @include opacity($color-secondary, -0.2);
-        border-radius: $borders-curve;
-        position: absolute;
-        right: 0;
-        margin: .5rem;
-        padding: .3rem;
-    }
-    .favorited {
-        color: red;
-    }
+  }
 }
-
-

@@ -1,146 +1,150 @@
-  /* ==========================================================================
+/* ==========================================================================
   Tools - Mixins
   ========================================================================== */
 
-  /* === Flexbox === */
-  @mixin flex($direction, $alignment, $wrap: nowrap) {
-    display: flex;
-    flex-direction: $direction;
-    flex-wrap: $wrap;
-    @if $alignment==center {
-      align-items: center;
-      justify-content: center;
-    }
-    @else if $alignment==space {
-      align-items: center;
-      justify-content: space-around;
-    }
-    @else if $alignment==start {
-      align-items: center;
-      justify-content: flex-start;
-    }
-    @else if $alignment==end {
-      align-items: center;
-      justify-content: flex-end;
-    }
+/* === Flexbox === */
+@mixin flex(
+  $direction,
+  $alignment,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  @if $alignment==center {
+    align-items: center;
+    justify-content: center;
+  } @else if $alignment==space {
+    align-items: center;
+    justify-content: space-around;
+  } @else if $alignment==start {
+    align-items: center;
+    justify-content: flex-start;
+  } @else if $alignment==end {
+    align-items: center;
+    justify-content: flex-end;
   }
+}
 
-  /* === Grid === */
-  @mixin grid($viewport) {
-    display: grid;
-    justify-items: center;
-    @if $viewport==mobile {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 1rem;
-    }
-    @else if $viewport==tablet {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem 2rem;
-    }
-    @else {
-      grid-template-columns: repeat(5, 1fr);
-      gap: 4rem 4rem;
-    }
+/* === Grid === */
+@mixin grid($viewport) {
+  display: grid;
+  justify-items: center;
+  @if $viewport==mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1rem;
+  } @else if $viewport==tablet {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 2rem;
+  } @else {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4rem 4rem;
   }
+}
 
-  /* === Fonts === */
+/* === Fonts === */
 
+@mixin heading {
+  @include scaling-font($font-size-heading);
+  font-family: $font-family-primary;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: $color-light;
+}
 
-  @mixin heading {
-    @include scaling-font($font-size-heading);
-    color: $color-light;
-    text-shadow: 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark;
-    font-family: $font-family-primary;
-    font-style: italic;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-  }
+@mixin subheading {
+  @include scaling-font($font-size-subheading);
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
 
-  @mixin subheading {
-    @include scaling-font($font-size-subheading);
-    font-weight: bolder;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-  }
+@mixin paragraph {
+  @include scaling-font($font-size-paragraph);
+}
 
-  @mixin paragraph {
-    @include scaling-font($font-size-paragraph);
-  }
+@mixin button {
+  @include scaling-font($font-size-button);
+  font-weight: bold;
+  text-transform: capitalize;
+}
 
-  @mixin button {
-    @include scaling-font($font-size-button);
-    font-weight: bold;
-    text-transform: capitalize;
-  }
+@mixin icon {
+  @include scaling-font($font-size-icon);
+}
 
-  /* === Media Queries === */
-  @mixin mobile($props) {
-    @media only screen and (min-width: 375px) {
-      @content;
-      @if $props==grid {
-        @include grid(mobile)
-      }
-      @else if $props==size {
-        width: 98%;
-        transition: 250ms;
-      }
-      @else if $props==fullMovie {
-        height: 15rem;
-      }
-    }
-  }
-
-  @mixin tablet($props) {
-    @media only screen and (min-width: 768px) {
-      @content;
-      @if $props==grid {
-        @include grid(tablet)
-      }
-      @else if $props==size {
-        transition: 250ms;
-        width: 95%;
-      }
-      @else if $props==fullMovie {
-        height: 20rem;
-      }
-      @else if $props==fullMovieDetails {
-        @include flex(row, space, wrap)
-      }
+/* === Media Queries === */
+@mixin mobile($props) {
+  @media only screen and (min-width: 375px) {
+    @content;
+    transition: 100ms;
+    @if $props==grid {
+      @include grid(mobile);
+    } @else if $props==fullMovie {
+      height: 15rem;
+    } @else if $props==inset {
+      top: 30%;
+      right: 0;
+    } @else if $props==btn-inset {
+      top: 15%;
+      right: 3%;
     }
   }
+}
 
-
-  @mixin desktop($props) {
-    @media only screen and (min-width: 1100px) {
-      @content;
-      @if $props==grid {
-        @include grid(desktop)
-      }
-      @else if $props==size {
-        transition: 250ms;
-        width: 90%;
-      }
-      @else if $props==fullMovie {
-        height: 20rem;
-      }
-      @else if $props==fullMovieDetails {
-        @include flex(row, space, wrap)
-      }
+@mixin tablet($props) {
+  @media only screen and (min-width: 768px) {
+    @content;
+    transition: 100ms;
+    @if $props==grid {
+      @include grid(tablet);
+    } @else if $props==fullMovie {
+      height: 25rem;
+    } @else if $props==fullMovieDetails {
+      @include flex(row, space, wrap);
+    } @else if $props==inset {
+      top: 15%;
+      right: 0%;
+    } @else if $props==btn-inset {
+      top: 15%;
+      right: 3%;
     }
   }
+}
 
-
-  /* === Helpers === */
-  @mixin mediaQueries($props) {
-    @include mobile($props);
-    @include tablet($props);
-    @include desktop($props);
+@mixin desktop($props) {
+  @media only screen and (min-width: 1100px) {
+    @content;
+    transition: 100ms;
+    @if $props==grid {
+      @include grid(desktop);
+    } @else if $props==fullMovie {
+      height: 30rem;
+    } @else if $props==fullMovieDetails {
+      @include flex(row, space, wrap);
+    } @else if $props==inset {
+      top: 2%;
+      right: 0%;
+    } @else if $props==btn-inset {
+      top: 20%;
+      right: 3%;
+    }
+    
   }
+}
 
-  @mixin opacity($color, $value) {
-    background: adjust-color($color, $alpha: $value);
-  }
+/* === Helpers === */
+@mixin mediaQueries($props) {
+  @include mobile($props);
+  @include tablet($props);
+  @include desktop($props);
+}
 
-  @mixin scaling-font($element) {
-    font-size: clamp($element);
-  }
+@mixin opacity($color, $value) {
+  background: adjust-color($color, $alpha: $value);
+}
+
+@mixin scaling-font($element) {
+  font-size: clamp($element);
+}
