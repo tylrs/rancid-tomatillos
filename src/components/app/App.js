@@ -109,7 +109,7 @@ class App extends Component {
   render() {
     return (
       <main> 
-      <Header />
+      {/* <Header /> */}
         <Switch>
           <Route exact path='/' render={({match}) => {
               const homePath = match.path
@@ -117,10 +117,15 @@ class App extends Component {
                 <>
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
-                  {!this.state.error && (<Header path={homePath} />,<MovieBoard 
-                    movies={this.state.movies} 
-                    selectMovie={this.selectMovie}
-                  />)}
+                  {!this.state.error && 
+                    <>
+                      <Header path={homePath} />
+                      <MovieBoard 
+                        movies={this.state.movies} 
+                        selectMovie={this.selectMovie}
+                      />
+                    </>
+                  }
                 </>
               )
             }}
@@ -146,17 +151,21 @@ class App extends Component {
           />
           <Route exact path='/favorites' render={({match}) => {
             const favoritePath = match.path
-            console.log(favoritePath)
             return (
               <>
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
                   {!this.state.favoriteMovies.length && <p>No Movies!</p>}
-                  {!this.state.error && (<Header path={favoritePath} />, <MovieBoard 
-                    movies={this.state.favoriteMovies} 
-                    selectMovie={this.selectMovie}
-                  />)}
-                </>
+                  {!this.state.error && 
+                  <>
+                    <Header path={favoritePath} />
+                    <MovieBoard 
+                      movies={this.state.favoriteMovies} 
+                      selectMovie={this.selectMovie}
+                    />
+                  </>
+                  }
+              </>
             )
             }}
           />
