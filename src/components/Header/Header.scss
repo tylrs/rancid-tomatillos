@@ -12,7 +12,24 @@ header {
       transform: scale(1.01);
     }
   }
+
+  :is(a, .icon) {
+    @include icon;
+    &:hover {
+      transition: 300ms;
+      transform: scale(1.01);
+      filter: drop-shadow(0 0 2.5px $color-light);
+      color: $color-light;
+    }
+  }
+
   .icon-none {
     visibility: hidden;
   }
+}
+
+a:hover {
+  transition: 300ms;
+  text-shadow: 0 0 3px $color-light;
+  transform: scale(1.01);
 }
