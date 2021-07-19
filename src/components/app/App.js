@@ -2,6 +2,7 @@ import MovieBoard from '../MovieBoard/MovieBoard';
 import Movie from '../Movie/Movie';
 import Error from '../Error/Error';
 import Header from '../Header/Header'
+import Loader from '../Loader/Loader'
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { cleanMovies, cleanMovie } from '../../utilities/utils';
@@ -117,7 +118,7 @@ class App extends Component {
                 <>
                   <Header path={homePath} />
                   {this.state.error && <Error error={this.state.error} />}
-                  {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
+                  {!this.state.movies.length && !this.state.error && <Loader />}
                   {!this.state.error &&
                     <MovieBoard 
                       movies={this.state.movies} 
@@ -133,7 +134,7 @@ class App extends Component {
             return (
               <>
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
-                {!this.state.selectedMovie && !this.state.error && <p>Loading...</p>}
+                {!this.state.selectedMovie && !this.state.error && <Loader />}
                 {!this.state.error && <Movie 
                   key={this.state.selectedMovie.id} 
                   movieInfo={this.state.selectedMovie} 
@@ -153,7 +154,7 @@ class App extends Component {
               <>
               <Header path={favoritePath} />
                   {this.state.error && <Error error={this.state.error} />}
-                  {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
+                  {!this.state.movies.length && !this.state.error && <Loader />}
                   {!this.state.favoriteMovies.length && <p>No Movies!</p>}
                   {!this.state.error && 
                     <MovieBoard 
