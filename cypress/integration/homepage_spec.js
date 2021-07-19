@@ -1,5 +1,4 @@
 describe('Homepage User Flows', () => {
-
   const moviesReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
   const singleMovieReq = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
   const singleMovieReq2 = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/718444'
@@ -12,7 +11,7 @@ describe('Homepage User Flows', () => {
       cy.visit('http://localhost:3000')
       cy.contains('Rancid Tomatillos')
       cy.contains('Loading...')
-      cy.get('a').should('have.length', 9)
+      cy.get('.movies-container a').should('have.length', 8)
       cy.get('a[href="/movies/694919"] img').should('be.visible')
     });
 
@@ -100,7 +99,7 @@ describe('Homepage User Flows', () => {
       cy.get('button').should('be.visible')
   });
 
-    it('Should be able to click back button on error to go back to moviesReq', () => {
+    it('Should be able to click back button on error to go back to home page', () => {
         cy.intercept('GET', moviesReq, {
             statusCode: 200,
             fixture: 'movies'
@@ -114,11 +113,11 @@ describe('Homepage User Flows', () => {
         cy.visit('http://localhost:3000')
         .get('a[href="/movies/694919"]').click()
         .get('button').click()
-        cy.get('a').should('have.length', 9)
+        cy.get('.movies-container a').should('have.length', 8)
         .url().should('includes', '/')
     });
 
-    it('Should be able to click back button on full movie view to go back to moviesReq', () => {
+    it('Should be able to click back button on full movie view to go back to home page', () => {
         cy.intercept('GET', moviesReq, {
             statusCode: 200,
             fixture: 'movies'
@@ -130,7 +129,7 @@ describe('Homepage User Flows', () => {
         cy.visit('http://localhost:3000')
         .get('a[href="/movies/694919"]').click()
         .get('button').click()
-        cy.get('a').should('have.length', 9)
+        cy.get('.movies-container a').should('have.length', 8)
         .url().should('includes', '/')
     });
 });
