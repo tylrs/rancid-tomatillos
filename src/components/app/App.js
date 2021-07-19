@@ -55,7 +55,6 @@ class App extends Component {
   unFavoriteMovie = (id) => {
     deleteFavoriteMovie(id)
     .then(data => {
-      console.log(data.favorites)
       this.setState((prevState) => {
         let updatedMovie = prevState.selectedMovie;
         updatedMovie.isFavorited = false;

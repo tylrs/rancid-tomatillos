@@ -8,8 +8,9 @@ import { sortGenres } from '../../utilities/utils';
 class Movie extends Component {
     constructor(props) {
       super(props)
+      this.timer = ''
       this.state = {
-        message: ''
+        message: '',
       }
     }
     componentDidMount() {
@@ -20,12 +21,16 @@ class Movie extends Component {
       if (this.props.movieInfo.isFavorited && !this.state.message) {
         this.props.unFavoriteMovie(this.props.id)
         this.setState({message: 'Removed from Favorites'})
-        setTimeout(() => this.setState({message:''}), 3000);
+        this.timer = setTimeout(() => this.setState({message:''}), 3000);
       } else if (!this.props.movieInfo.isFavorited && !this.state.message){
         this.props.favoriteMovie(this.props.id)
         this.setState({message: 'Added to Favorites'})
-        setTimeout(() => this.setState({message:''}), 3000);
+        this.timer = setTimeout(() => this.setState({message:''}), 3000);
       }
+    }
+
+    componentWillUnmount() {
+      clearTimeout(this.timer);
     }
 
     render() {
@@ -44,8 +49,12 @@ class Movie extends Component {
         </div>
         <div className='title-container'>
           <h2>{title}</h2>
-          <Link to='/'><button className="movie-back-button" onClick={()=>
-            {this.props.unselectMovie()}}>back</button></Link>
+          <Link to='/'>
+            <button className="movie-back-button" 
+            onClick={()=>{this.props.unselectMovie()}}
+            >back
+            </button>
+          </Link>
         </div>
         <div className="info-container">
         {!!this.state.message && <p>{this.state.message}</p>}
