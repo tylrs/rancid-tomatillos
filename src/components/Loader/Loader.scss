@@ -1,7 +1,7 @@
 .loader {
     @include animation-spin;
     position: absolute;
-    font-size: 10rem;
     top: 30%;
     animation: spin 1s infinite;
+    font-size: 10rem;
 }

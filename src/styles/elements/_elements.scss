@@ -37,15 +37,15 @@ button {
   @include flex(column, center);
   @include button;
   @include opacity($color-secondary, -0.7);
+  transition: 100ms;
   border: $color-secondary 1.5px solid;
   border-radius: $borders-curve-strong;
   padding: 0.1rem 0.5rem;
   color: $color-light;
-  transition: 100ms;
   &:hover {
     @include opacity($color-secondary, -0.5);
     transition: 100ms;
-    border: $color-light 1.5px solid;
     text-shadow: 0 0 1.5px $color-light;
+    border: $color-light 1.5px solid;
   }
 }
