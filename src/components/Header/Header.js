@@ -6,7 +6,6 @@ import { faBackward } from '@fortawesome/free-solid-svg-icons'
 
 
 const Header = ({path}) => {
-  console.log('hello', path)
   return (
     <header>
       { path === "/favorites" &&
@@ -15,7 +14,7 @@ const Header = ({path}) => {
         </NavLink> }
 
         <NavLink to="/">
-        <h1>Rancid Tomatillos</h1>
+          <h1>Rancid Tomatillos</h1>
         </NavLink>
 
       { path !== "/favorites"  && 
