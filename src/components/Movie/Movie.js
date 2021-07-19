@@ -42,10 +42,14 @@ class Movie extends Component {
         <article className='selected-movie'>
         <div className="img-container">
           <img src={backdrop_path} alt={title} />
-          <FontAwesomeIcon className={isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+          <FontAwesomeIcon className={isFavorited ? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+          {!!this.state.message && <div className="message-container">
+            <h3>{this.state.message}</h3>
+          </div>}
           <div className="tagline-container">
             <h3>{tagline}</h3>
           </div>
+      
         </div>
         <div className='title-container'>
           <h2>{title}</h2>
@@ -57,7 +61,6 @@ class Movie extends Component {
           </Link>
         </div>
         <div className="info-container">
-        {!!this.state.message && <p>{this.state.message}</p>}
           <div className="rating-container">
             <h4>Rating:</h4>
             <p>{average_rating}</p>
