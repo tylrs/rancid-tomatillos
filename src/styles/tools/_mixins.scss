@@ -49,7 +49,6 @@
   @mixin heading {
     @include scaling-font($font-size-heading);
     color: $color-light;
-    text-shadow: 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark, 0 0 1px $color-dark;
     font-family: $font-family-primary;
     font-style: italic;
     text-transform: uppercase;
