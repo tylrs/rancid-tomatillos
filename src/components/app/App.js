@@ -109,7 +109,6 @@ class App extends Component {
   render() {
     return (
       <main> 
-      {/* <Header /> */}
         <Switch>
           <Route exact path='/' render={({match}) => {
               const homePath = match.path
@@ -130,8 +129,10 @@ class App extends Component {
           />
           <Route exact path='/movies/:id' render={({match}) => {
             const id = parseInt(match.params.id);
+            const favoritePath = match.path;
             return (
               <>
+                <Header path={favoritePath} />  
                 {this.state.error && <Error error={this.state.error} leaveError={this.leaveError}/>}
                 {!this.state.selectedMovie && !this.state.error && <p>Loading...</p>}
                 {!this.state.error && <Movie 
