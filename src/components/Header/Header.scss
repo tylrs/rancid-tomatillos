@@ -5,6 +5,10 @@ header {
   width: 100%;
   h1 {
     align-self: center;
+    transition: 300ms;
+    &:hover {
+      transition: 300ms;
+      text-shadow: 0 0 5px $color-light;
+    }
   }
-
 }
