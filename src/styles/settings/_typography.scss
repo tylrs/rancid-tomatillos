@@ -3,22 +3,23 @@ Settings - Typography
 ========================================================================== */
 
 /* === Font Import === */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko&display=swap");
 
 /* === Defaults === */
-$font-family-defaults: 'Roboto', sans-serif;
+$font-family-defaults: "Roboto", sans-serif;
 $font-size-defaults: 1rem;
 $font-style-defaults: normal;
-$font-line-height-defaults: 1rem; 
+$font-line-height-defaults: 1rem;
 $font-weight-defaults: normal;
 $font-style-defaults: normal;
 
 /* === Font-Family === */
-$font-family-primary: 'Teko', sans-serif;
+$font-family-primary: "Teko", sans-serif;
 
 /* === Font Size === */
-$font-size-heading: 3rem, 6vw,  7rem;
-$font-size-subheading: 1.5rem,  4vw,  6rem;
+$font-size-heading: 3rem, 6vw, 7rem;
+$font-size-subheading: 1.5rem, 4vw, 6rem;
 $font-size-paragraph: 1rem, 2vw, 2.5rem;
 $font-size-button: 1rem, 3vw, 2rem;
+$font-size-icon: 1.5rem, 3vw, 3rem;
