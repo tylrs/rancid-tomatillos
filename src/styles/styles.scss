@@ -1,33 +1,32 @@
-
 /* ==========================================================================
 Settings - Global Variables
 ========================================================================== */
-@import './settings/colors';
-@import './settings/borders';
-@import './settings/typography';
+@import "./settings/colors";
+@import "./settings/borders";
+@import "./settings/typography";
 
 /* ==========================================================================
 Tools - Mixins
 ========================================================================== */
-@import './tools/mixins';
+@import "./tools/keyframes";
+@import "./tools/mixins";
 
 /* ==========================================================================
 Generic - Resets & Normalize Styles
 ========================================================================== */
-@import './generics/generics';
+@import "./generics/generics";
 
 /* ==========================================================================
 Elements - Semanitic Bare Elements 
 ========================================================================== */
-@import './elements/elements';
+@import "./elements/elements";
 
 /* ==========================================================================
    Components -  Specific UI components
 ========================================================================== */
-@import '../components/App/App.scss';
-@import '../components/Error/Error.scss';
-@import '../components/Header/Header.scss';
-@import '../components/Movie/Movie.scss';
-@import '../components/MovieBoard/MovieBoard.scss';
-@import '../components/MovieCover/MovieCover.scss';
-
+@import "../components/App/App.scss";
+@import "../components/Error/Error.scss";
+@import "../components/Header/Header.scss";
+@import "../components/Movie/Movie.scss";
+@import "../components/MovieBoard/MovieBoard.scss";
+@import "../components/MovieCover/MovieCover.scss";
