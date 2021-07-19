@@ -8,20 +8,24 @@ import { faBackward } from '@fortawesome/free-solid-svg-icons'
 const Header = ({path}) => {
   return (
     <header>
-      { path === "/favorites" &&
+       <div>
+      { path === "/favorites" ?
         <NavLink to="/">
           <FontAwesomeIcon className="icon" icon={faBackward} />
-        </NavLink> }
-
+        </NavLink> : <FontAwesomeIcon className="icon-none" icon={faHeart} />
+ }
+        </div>
         <NavLink to="/">
           <h1>Rancid Tomatillos</h1>
         </NavLink>
 
-      { path !== "/favorites"  && 
+      { path !== "/favorites"  ?
         <NavLink to="/favorites">
           <FontAwesomeIcon className="icon" icon={faHeart} />
-        </NavLink> }
+        </NavLink> : <FontAwesomeIcon className="icon-none" icon={faHeart} />
+ }
     </header>
+ 
   ) 
 }
 
