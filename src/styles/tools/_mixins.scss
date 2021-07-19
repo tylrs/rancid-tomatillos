@@ -89,10 +89,11 @@
     } @else if $props==btn-inset {
       top: 15%;
       right: 3%;
+    } @else if $props==movie-font {
+      @include subheading
     }
   }
 }
-
 @mixin tablet($props) {
   @media only screen and (min-width: 768px) {
     @content;
@@ -109,10 +110,11 @@
     } @else if $props==btn-inset {
       top: 15%;
       right: 3%;
+    } @else if $props==movie-font {
+      @include subheading
     }
   }
 }
-
 @mixin desktop($props) {
   @media only screen and (min-width: 1100px) {
     @content;
@@ -129,8 +131,9 @@
     } @else if $props==btn-inset {
       top: 20%;
       right: 3%;
+    } @else if $props==movie-font {
+      @include heading
     }
-    
   }
 }
 

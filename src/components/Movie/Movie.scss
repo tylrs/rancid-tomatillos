@@ -1,25 +1,23 @@
 .selected-movie {
   @include opacity($color-tertierary, -0.8);
-  margin: 0.5rem;
   border: 3px solid $color-light;
   border-radius: $borders-curve;
   padding-bottom: 0.3rem;
   .title-container {
-    @include flex(row, end);
+    @include flex(row, space);
     position: relative;
     border-top: 2px solid $color-light;
     width: 100%;
     height: clamp($font-size-heading);
     .movie-back-button {
-      @include mediaQueries(btn-inset);
       transition: 100ms;
       margin-right: 2rem;
-    }
     h2 {
-      @include heading;
-      position: absolute;
-      right: 45%;
+      @include subheading;
+      align-self: center;
       margin-top: .6rem;
+      width: 100%;
+      }
     }
   }
   .overview {
