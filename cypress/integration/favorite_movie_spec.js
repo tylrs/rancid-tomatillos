@@ -329,4 +329,39 @@ describe('Favorite a Movie User Flow', () => {
         .click()
         cy.get('.movies-container a').should('have.length', 8)
     })
+    it('Should be able to click on the title to get back to home', () => {
+        cy.intercept('GET', moviesReq, {
+            statusCode: 200,
+            fixture: 'movies'
+        }) 
+        cy.intercept('GET', favoriteMoviesReq, {
+            statusCode: 200,
+            body: {
+                "favorites": [
+                    {
+                        "id": 694919,
+                        "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+                        "title": "Money Plane"
+                    },
+                    {
+                        "id": 337401,
+                        "poster_path": "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
+                        "title": "Mulan",
+                    },
+                    {
+                        "id": 718444,
+                        "poster_path": "https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg",
+                        "title": "Rogue",
+                    }
+
+                ]
+            }
+        }) 
+        cy.LoadHome()
+        cy.get('.svg-inline--fa')
+        .click()
+        cy.get('h1')
+        .click()
+        cy.get('.movies-container a').should('have.length', 8)
+    })
 })
