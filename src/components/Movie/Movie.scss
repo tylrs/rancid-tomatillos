@@ -102,16 +102,18 @@
     transition: 300ms;
     &:hover {
       transition: 300ms;
-      color: #fe251b;
+      transform: scale(1.01);
+      filter: drop-shadow(0 0 2.5px $color-favorite);
     }
   }
   .favorited {
     @extend .favorite-button;
-    color: #fe251b;
+    color: $color-favorite;
     transition: 300ms;
     &:hover {
       transition: 300ms;
-      color: $color-light;
+      transform: scale(1.01);
+      filter: drop-shadow(0 0 2.5px $color-light);
     }
   }
 }
