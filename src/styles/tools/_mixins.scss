@@ -83,6 +83,9 @@
       @include grid(mobile);
     } @else if $props==fullMovie {
       height: 15rem;
+    } @else if $props==inset {
+      top: 30%;
+      right: 0;
     }
   }
 }
@@ -97,6 +100,9 @@
       height: 25rem;
     } @else if $props==fullMovieDetails {
       @include flex(row, space, wrap);
+    } @else if $props==inset {
+      top: 15%;
+      right: 0%;
     }
   }
 }
@@ -111,6 +117,9 @@
       height: 30rem;
     } @else if $props==fullMovieDetails {
       @include flex(row, space, wrap);
+    } @else if $props==inset {
+      top: 15%;
+      right: 0%;
     }
   }
 }
