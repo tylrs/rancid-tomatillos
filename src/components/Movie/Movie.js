@@ -10,7 +10,7 @@ class Movie extends Component {
       super(props)
       this.timer = ''
       this.state = {
-        message: '',
+        message: ''
       }
     }
     componentDidMount() {
@@ -110,8 +110,6 @@ Movie.propTypes = {
       release_date: PropTypes.string,
       overview: PropTypes.string,
       genres: PropTypes.array,
-      budget: PropTypes.number,
-      revenue: PropTypes.number,
       runtime: PropTypes.number,
       tagline: PropTypes.string,
       isFavorited: PropTypes.bool
