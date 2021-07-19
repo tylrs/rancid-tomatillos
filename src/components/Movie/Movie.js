@@ -36,13 +36,13 @@ class Movie extends Component {
     render() {
         const {backdrop_path, title, average_rating,
             release_date, overview, genres = [], budget,
-             revenue, runtime, tagline} = this.props.movieInfo;
+             revenue, runtime, tagline, isFavorited} = this.props.movieInfo;
        let genreTags = sortGenres(genres);
        return (
         <article className='selected-movie'>
         <div className="img-container">
           <img src={backdrop_path} alt={title} />
-          <FontAwesomeIcon className={this.props.movieInfo.isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
+          <FontAwesomeIcon className={isFavorited? "favorite-button favorited" : "favorite-button"} icon={faHeart} size="3x" onClick={() => {this.determineFavoriteUnfavorite()}}/>
           <div className="tagline-container">
             <h3>{tagline}</h3>
           </div>
@@ -101,14 +101,17 @@ class Movie extends Component {
 export default Movie
 
 Movie.propTypes = {
-    movieInfo: PropTypes.object,
-    title: PropTypes.string,
-    average_rating: PropTypes.number,
-    release_date: PropTypes.string,
-    overview: PropTypes.string,
-    genres: PropTypes.array,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    runtime: PropTypes.number,
-    tagline: PropTypes.string
+    movieInfo: PropTypes.shape({
+      title: PropTypes.string,
+      average_rating: PropTypes.string,
+      release_date: PropTypes.string,
+      overview: PropTypes.string,
+      genres: PropTypes.array,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
+      runtime: PropTypes.number,
+      tagline: PropTypes.string,
+      isFavorited: PropTypes.bool
+    })
+    
 }
