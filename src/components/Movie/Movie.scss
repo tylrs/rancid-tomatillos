@@ -55,8 +55,6 @@
       @include mediaQueries(inset);
       @include animation-slide;
       position: absolute;
-      top: 15%;
-      right: 0;
       opacity: 1;
       animation: slide 3s;
       border-radius: 5px;

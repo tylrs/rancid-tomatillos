@@ -124,7 +124,7 @@
     } @else if $props==fullMovieDetails {
       @include flex(row, space, wrap);
     } @else if $props==inset {
-      top: 2%;
+      top: 15%;
       right: 0%;
     } @else if $props==btn-inset {
       top: 20%;
