@@ -115,16 +115,14 @@ class App extends Component {
               const homePath = match.path
               return (
                 <>
+                  <Header path={homePath} />
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
-                  {!this.state.error && 
-                    <>
-                      <Header path={homePath} />
-                      <MovieBoard 
-                        movies={this.state.movies} 
-                        selectMovie={this.selectMovie}
-                      />
-                    </>
+                  {!this.state.error &&
+                    <MovieBoard 
+                      movies={this.state.movies} 
+                      selectMovie={this.selectMovie}
+                    />
                   }
                 </>
               )
@@ -153,17 +151,15 @@ class App extends Component {
             const favoritePath = match.path
             return (
               <>
+              <Header path={favoritePath} />
                   {this.state.error && <Error error={this.state.error} />}
                   {!this.state.movies.length && !this.state.error && <p>Loading...</p>}
                   {!this.state.favoriteMovies.length && <p>No Movies!</p>}
                   {!this.state.error && 
-                  <>
-                    <Header path={favoritePath} />
                     <MovieBoard 
                       movies={this.state.favoriteMovies} 
                       selectMovie={this.selectMovie}
                     />
-                  </>
                   }
               </>
             )
