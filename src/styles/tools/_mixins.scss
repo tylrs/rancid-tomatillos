@@ -46,11 +46,11 @@
 
 @mixin heading {
   @include scaling-font($font-size-heading);
-  color: $color-light;
   font-family: $font-family-primary;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  color: $color-light;
 }
 
 @mixin subheading {
@@ -142,10 +142,7 @@
 }
 
 @mixin opacity($color, $value) {
-  background: adjust-color(
-    $color,
-    $alpha: $value
-  );
+  background: adjust-color($color, $alpha: $value);
 }
 
 @mixin scaling-font($element) {

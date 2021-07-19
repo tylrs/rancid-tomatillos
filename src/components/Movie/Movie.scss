@@ -6,13 +6,12 @@
   padding-bottom: 0.3rem;
   .title-container {
     @include flex(row, center);
+    position: relative;
     border-top: 2px solid $color-light;
     width: 100%;
-    position: relative;
     .movie-back-button {
       @include mediaQueries(btn-inset);
       position: absolute;
-
     }
   }
   .overview {
@@ -27,10 +26,10 @@
     @include flex(row, center);
     position: relative;
     img {
-      border-radius: 3px 3px 0 0;
       transition: 250ms;
-      height: 100%;
+      border-radius: 3px 3px 0 0;
       width: 100%;
+      height: 100%;
     }
     .tagline-container {
       @include opacity($color-secondary, -0.2);
@@ -48,13 +47,13 @@
       @include mediaQueries(inset);
       @include animation-slide;
       position: absolute;
-      opacity: 1;
       top: 15%;
       right: 0;
+      opacity: 1;
+      animation: slide 3s;
+      border-radius: 5px;
       padding: 0 1rem;
       background: $color-secondary;
-      border-radius: 5px;
-      animation: slide 3s;
     }
   }
   .info-container {
@@ -93,26 +92,26 @@
   }
   .favorite-button {
     @include opacity($color-secondary, -0.2);
-    border-radius: $borders-curve-strong;
     position: absolute;
     top: 0;
     right: 0;
-    margin: 0.5rem;
-    padding: 0.3rem;
     transition: 300ms;
+    margin: 0.5rem;
+    border-radius: $borders-curve-strong;
+    padding: 0.3rem;
     &:hover {
-      transition: 300ms;
       transform: scale(1.01);
+      transition: 300ms;
       filter: drop-shadow(0 0 2.5px $color-favorite);
     }
   }
   .favorited {
     @extend .favorite-button;
-    color: $color-favorite;
     transition: 300ms;
+    color: $color-favorite;
     &:hover {
-      transition: 300ms;
       transform: scale(1.01);
+      transition: 300ms;
       filter: drop-shadow(0 0 2.5px $color-light);
     }
   }

@@ -1,10 +1,10 @@
 .movies-container {
     @include mediaQueries(grid);
-    margin-top: 1.5rem;
     transition: ease-in-out all 500ms;
+    margin-top: 1.5rem;
     :hover{
-        transition: 500ms;
         opacity: 1;
+        transition: 500ms;
     }
 }
 
