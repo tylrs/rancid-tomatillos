@@ -24,8 +24,9 @@ header {
   }
 
   .icon-none {
-    visibility: hidden;
-  }
+    @include icon;
+    visibility: hidden
+    }
 }
 
 a:hover {
