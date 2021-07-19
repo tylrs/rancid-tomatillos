@@ -10,7 +10,7 @@ describe('Homepage User Flows', () => {
       })
       cy.visit('http://localhost:3000')
       cy.contains('Rancid Tomatillos')
-      cy.contains('Loading...')
+      cy.get('.loader > .svg-inline--fa').should('be.visible')
       cy.get('.movies-container a').should('have.length', 8)
       cy.get('a[href="/movies/694919"] img').should('be.visible')
     });
