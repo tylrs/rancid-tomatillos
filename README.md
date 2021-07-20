@@ -5,7 +5,7 @@ This two week React project was our entry into the framework, amongst other new 
 
 ## Badges
 
-<p style="text-align: center;"> 
+<p text-align="center"> 
     <img alt="React Badge" src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=flat-square)" />
     <img alt="JavaScript Badge" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat-square" />
     <img alt="HTML5 Badge" src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff&style=flat-square" />
@@ -27,8 +27,9 @@ This two week React project was our entry into the framework, amongst other new 
 
 ## Demo
 
-Insert gif or link to demo
-
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/17935770/126243516-dde319cb-5ea3-426e-93f3-9708bac11d2d.gif">
+</p>
   
 ## Installation
 
