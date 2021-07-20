@@ -3,6 +3,7 @@
   border: 3px solid $color-light;
   border-radius: $borders-curve;
   padding-bottom: 0.3rem;
+  @include mediaQueries(movieWidth);
   .title-container {
     @include flex(row, space);
     position: relative;

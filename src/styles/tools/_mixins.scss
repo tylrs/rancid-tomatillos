@@ -91,6 +91,9 @@
       right: 3%;
     } @else if $props==movie-font {
       @include subheading
+    } @else if $props==movieWidth {
+      margin-top: 1rem;
+      width: 97%;
     }
   }
 }
@@ -112,6 +115,9 @@
       right: 3%;
     } @else if $props==movie-font {
       @include subheading
+    } @else if $props==movieWidth {
+      margin-top: 1rem;
+      width: 92%;
     }
   }
 }
@@ -133,6 +139,9 @@
       right: 3%;
     } @else if $props==movie-font {
       @include heading
+    } @else if $props==movieWidth {
+      margin-top: 1rem;
+      width: 50%;
     }
   }
 }
