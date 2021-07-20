@@ -69,11 +69,6 @@ class App extends Component {
       this.setState({error: 'Could not delete movie'})
     })
   }
-  
-  getFavorites = () => {
-    fetchFavorites()
-    
-  }
 
   selectMovie = (id) => {
     fetchMovie(id)
