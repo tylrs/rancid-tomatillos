@@ -65,7 +65,7 @@ npm start
 After that, open up a new terminal and `cd` into the *rancid-tomatillos-microservice* repository and run
 
 ```zsh
-npm start
+nodemon server.js
 ```
 
 
