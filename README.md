@@ -2,6 +2,7 @@
 
 This two week React project was our entry into the framework, amongst other new technologies (Express & Cypress). We created an application in which the user can choose whichever movie available and learn more about it, as well as favorite it. 
 
+[View Deployed App](https://rancid-tomatillos-tylrs.herokuapp.com/)
 
 ## Badges
 
