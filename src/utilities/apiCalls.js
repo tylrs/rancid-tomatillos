@@ -19,7 +19,7 @@ export const fetchMovie = (id) => {
 }
 
 export const submitFavoriteMovie = (favorited) => {
-    return fetch(`http://localhost:3001/favorites`, {
+    return fetch(`https://rancid-tomatillos-microservice.herokuapp.com/favorites`, {
         method: 'POST',
         body: JSON.stringify(favorited),
         headers: {
@@ -35,7 +35,7 @@ export const submitFavoriteMovie = (favorited) => {
 }
 
 export const fetchFavorites = () => {
-    return fetch(`http://localhost:3001/favorites`)
+    return fetch(`https://rancid-tomatillos-microservice.herokuapp.com/favorites`)
     .then(response => {
       if (!response.ok) {
         throw Error()
@@ -45,7 +45,7 @@ export const fetchFavorites = () => {
 }
 
 export const deleteFavoriteMovie = (id) => {
-    return fetch(`http://localhost:3001/favorites`, {
+    return fetch(`https://rancid-tomatillos-microservice.herokuapp.com/favorites`, {
         method: 'DELETE',
         body: JSON.stringify({id}),
         headers: {
